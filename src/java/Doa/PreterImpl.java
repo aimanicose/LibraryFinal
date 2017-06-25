@@ -30,7 +30,7 @@ public class PreterImpl implements IPreter {
     }
 
     @Override
-    public List<Preter> selectPreter(Preter p) {
+    public List<Preter> selectPreter() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

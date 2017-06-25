@@ -16,5 +16,5 @@ public interface IPreter {
     boolean addPreter(Preter p);
     boolean deletePreter(Preter p);
     boolean updatePreter(Preter p);
-    List<Preter> selectPreter(Preter p);
+    List<Preter> selectPreter();
 }

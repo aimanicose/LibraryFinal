@@ -33,7 +33,7 @@ IPreter ip=new PreterImpl();
 
     @Override
     public List<Preter> selectPreter() {
-       return null;// return ip.selectPreter();
+       return ip.selectPreter();
     }
     
 }
