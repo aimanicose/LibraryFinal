@@ -10,6 +10,9 @@ public class Preter {
 
 	private Book Book;
 	private User User;
+        private String DateSortie;
+        private String Message;
+        
 
     /**
      * @return the Book
@@ -37,6 +40,34 @@ public class Preter {
      */
     public void setUser(User User) {
         this.User = User;
+    }
+
+    /**
+     * @return the DateSortie
+     */
+    public String getDateSortie() {
+        return DateSortie;
+    }
+
+    /**
+     * @param DateSortie the DateSortie to set
+     */
+    public void setDateSortie(String DateSortie) {
+        this.DateSortie = DateSortie;
+    }
+
+    /**
+     * @return the Message
+     */
+    public String getMessage() {
+        return Message;
+    }
+
+    /**
+     * @param Message the Message to set
+     */
+    public void setMessage(String Message) {
+        this.Message = Message;
     }
 
 	
