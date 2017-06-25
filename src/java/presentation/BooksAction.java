@@ -4,8 +4,12 @@ import Models.Book;
 import Models.Author;
 import Models.BookGenre;
 import Models.Editor;
+import Models.Preter;
+import Models.User;
 import Service.BookServiceImpl;
 import Service.IBookService;
+import Service.IPreterService;
+import Service.PreterServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -24,7 +28,11 @@ public class BooksAction extends ActionSupport {
   private double price;
   private String reference;
   private String summary;
-  private List<Object> authorEditorInfo; 
+  private List<Object> authorEditorInfo;
+  private List<Book> borrowBookList;
+  private User borrowUser;
+  private String borrowDate;
+  private String borrowSumary;
   
   
   public String redirectBooks(){
@@ -85,11 +93,27 @@ public class BooksAction extends ActionSupport {
     return "success";
   }
   
- public String authorEditorInfo(){
+  public String authorEditorInfo(){
     authorEditorInfo = new ArrayList<Object>();
     //Author author = new Author("A","B",1);
     //authorEditorInfo.add(author);
     return "json";
+  }
+  
+  public String bookAllocation(){
+    IPreterService preter = new PreterServiceImpl();
+    
+    for(Book book:borrowBookList){
+      Preter p =  new Preter();
+      p.setBook(book);
+      p.setDateSortie(borrowDate);
+      p.setMessage(borrowSumary);
+      p.setUser(borrowUser);
+      
+      preter.addPreter(p);
+    }
+    
+    return "success";
   }
   
   public int getBookId() {
@@ -111,70 +135,103 @@ public class BooksAction extends ActionSupport {
   public void setFirstName(String firstName) {
     this.firstName = firstName;
   }
-
+  
   public String getEditor() {
     return editor;
   }
-
+  
   public void setEditor(String editor) {
     this.editor = editor;
   }
-
+  
   public String getGenre() {
     return genre;
   }
-
+  
   public void setGenre(String genre) {
     this.genre = genre;
   }
-
+  
   public String getLanguage() {
     return language;
   }
-
+  
   public void setLanguage(String language) {
     this.language = language;
   }
-
+  
   public String getDate() {
     return date;
   }
-
+  
   public void setDate(String date) {
     this.date = date;
   }
-
+  
   public double getPrice() {
     return price;
   }
-
+  
   public void setPrice(double price) {
     this.price = price;
   }
-
+  
   public String getReference() {
     return reference;
   }
-
+  
   public void setReference(String reference) {
     this.reference = reference;
   }
-
+  
   public String getSummary() {
     return summary;
   }
-
+  
   public void setSummary(String summary) {
     this.summary = summary;
   }
-
+  
   public List<Object> getAuthorEditorInfo() {
     return authorEditorInfo;
   }
-
+  
   public void setAuthorEditorInfo(List<Object> authorEditorInfo) {
     this.authorEditorInfo = authorEditorInfo;
   }
+
+  public List<Book> getBorrowBookList() {
+    return borrowBookList;
+  }
+
+  public void setBorrowBookList(List<Book> borrowBookList) {
+    this.borrowBookList = borrowBookList;
+  }
   
+
+  
+  public User getBorrowUser() {
+    return borrowUser;
+  }
+  
+  public void setBorrowUser(User borrowUser) {
+    this.borrowUser = borrowUser;
+  }
+  
+  public String getBorrowDate() {
+    return borrowDate;
+  }
+  
+  public void setBorrowDate(String borrowDate) {
+    this.borrowDate = borrowDate;
+  }
+  
+  public String getBorrowSumary() {
+    return borrowSumary;
+  }
+  
+  public void setBorrowSumary(String borrowSumary) {
+    this.borrowSumary = borrowSumary;
+  }
   
 }

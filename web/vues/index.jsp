@@ -130,7 +130,7 @@
                                         <label>User ID : </label>
                                     </row>
                                     <row>
-                                        <input type="text" class="form-control" name="userName"/>
+                                        <input type="text" class="form-control" name="borrowUser.userID"/>
                                     </row>
                                     <row>
                                         <label>Book Name :  </label>
@@ -140,7 +140,7 @@
                                     </row>
                                     <row>
                                         <div class="input_fields_wrap">
-                                            <div><input id="book1" class="form-control" type="text" name="book1"></div>
+                                            <div><input id="book1" class="typeahead form-control ui-autocomplete-input" autocomplete="new-password" type="text" name="borrowBookList[1].bookName"></div>
                                         </div>
                                     </row>
                                     <row>
@@ -148,7 +148,7 @@
                                     </row>
                                     <row>
                                         <div class="input-group date" data-provide="datepicker">
-                                            <input type="text" class="form-control" data-date-format="dd/mm/yyyy" name="borrowingData">
+                                            <input type="text" class="form-control" data-date-format="dd/mm/yyyy" name="borrowDate">
                                                 <div class="input-group-addon">
                                                     <span class="glyphicon glyphicon-th"></span>
                                                 </div>
@@ -158,7 +158,7 @@
                                         <label>Enter Message : </label>  
                                     </row>
                                     <row>
-                                        <textarea rows="9" class="form-control" name="message"></textarea>
+                                        <textarea rows="9" class="form-control" name="borrowSumary"></textarea>
                                     </row>
                                     <hr />
                                     <button type="submit" href="#" class="btn btn-warning"><span class="glyphicon glyphicon-paperclip"></span> Allocate Book </button>&nbsp;

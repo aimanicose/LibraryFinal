@@ -55,5 +55,6 @@
                     <param name="inputName">stream</param>
                 </result>
         </action>
+        
     </package>
 </struts>

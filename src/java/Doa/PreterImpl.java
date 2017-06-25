@@ -29,7 +29,7 @@ IBook ib=new BookImpl();
 		try
 		{
 			c=ConnectionManager.getInstance().etablirconnection();
-			String req="insert into preter (UserID,BookID,DateSortie,Message) values("+p.getUser().getUserID()+","+p.getBook().getBookID()+",'"+p.getDateSortie()+"','"+p.getMessage()+"')";
+			String req="insert into preter (UserID,BookID,DateSortie,Message) values("+p.getUser().getUserID()+",(Select bookId from Book where bookName = '"+p.getBook().getBookName()+"'),'"+p.getDateSortie()+"','"+p.getMessage()+"')";
 			//String req="insert into preter (UserID,BookID,DateSortie,Message) values("+p.getUser().getUserID()+","+p.getBook().getBookID()+",'"+p.getDateSortie()+"','"+p.getMessage()+"')";
                         Statement st=c.createStatement();
 			st.execute(req);

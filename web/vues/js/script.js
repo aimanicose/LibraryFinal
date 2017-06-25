@@ -226,7 +226,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div><a href="#" class="remove_field">Remove</a><input id="book'+x+'" type="text" name="book'+x+'" class="typeahead form-control"/></div>'); //add input box
+            $(wrapper).append('<div><a href="#" class="remove_field">Remove</a><input id="book'+x+'" type="text" name="borrowBookList['+x+'].bookName" class="typeahead form-control"/></div>'); //add input box
         }
         autocompleteInput("book"+x);
     });
