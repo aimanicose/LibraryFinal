@@ -1,8 +1,3 @@
-/*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
 package Doa;
 
 import Models.Author;
@@ -33,6 +28,7 @@ public class BookImpl implements IBook {
     boolean bool=false;
     try
     {
+        
       c=ConnectionManager.getInstance().etablirconnection();
       String req="insert into book (BookID,BookLanguage,BookName,BookPrice,PublicationDate,bookSummary,bookReferance,bookImageId,booksInStore,AuthorID,EditorID,GenreID) values("+b.getBookID()+",'"+b.getBookLanguage()+"','"+b.getBookName()+"',"+b.getBookPrice()+",'"+b.getBookPublicationDate()+"','"+b.getBookSummary()+"','"+b.getBookReferance()+"','"+b.getBookImageId()+"',"+b.getBooksInStore()+","+b.getBookAuthor().getAuthorID()+","+b.getBookEditor().getEditorID()+","+b.getBookGenre().getGenreID()+")";
       Statement st=c.createStatement();
