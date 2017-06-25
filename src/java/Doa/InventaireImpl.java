@@ -57,13 +57,8 @@ IBook ib=new BookImpl();
 			String req="select * from inventaire";
                       
                         Statement st=c.createStatement();
-                      
-                          //book =;
-                      
-                             s=st.executeQuery(req);
+                        s=st.executeQuery(req);
                         
-			
-			
 			while(s.next())
 			{    i=new Inventaire();
                              u=new User();

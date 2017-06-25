@@ -52,8 +52,10 @@ public class BookImpl implements IBook {
     try
     {
       c=ConnectionManager.getInstance().etablirconnection();
+      String req1="delete from preter WHERE  BookID = "+b.getBookID()+"";
       String req="delete from book WHERE  BookID = "+b.getBookID()+"";
       Statement st=c.createStatement();
+      st.execute(req1);
       st.execute(req);
       bool=true;
     }
@@ -232,6 +234,72 @@ public class BookImpl implements IBook {
     }
     return listbook;
   }
+
+    @Override
+    public int bookinstore() {
+    int bookinstore=0;
+    Connection c=null;
+    ResultSet s;
+    try
+    {
+      c=ConnectionManager.getInstance().etablirconnection();
+      
+      String req="SELECT sum(booksInStore) as sumbookinstore from book";
+      
+      Statement st=c.createStatement();
+      
+      
+      s=st.executeQuery(req);
+      
+      
+      
+      while(s.next())
+      {
+          bookinstore=Integer.parseInt(s.getString("sumbookinstore"));
+      }
+    }
+    catch(Exception e)
+    {
+      e.printStackTrace();
+    }
+    finally{
+      ConnectionManager.getInstance().fermerConnection(c);
+    }
+    return bookinstore;
+    }
+
+    @Override
+    public int bookoutstore() {
+         int bookoutstore=0;
+    Connection c=null;
+    ResultSet s;
+    try
+    {
+      c=ConnectionManager.getInstance().etablirconnection();
+      
+      String req="SELECT count(BookID) as bookoutstore from preter";
+      
+      Statement st=c.createStatement();
+      
+      
+      s=st.executeQuery(req);
+      
+      
+      
+      while(s.next())
+      {
+          bookoutstore=Integer.parseInt(s.getString("bookoutstore"));
+      }
+    }
+    catch(Exception e)
+    {
+      e.printStackTrace();
+    }
+    finally{
+      ConnectionManager.getInstance().fermerConnection(c);
+    }
+    return bookoutstore;
+    }
   
 }
 

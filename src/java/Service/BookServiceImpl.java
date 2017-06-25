@@ -54,5 +54,16 @@ IBook IB=new BookImpl();
   public List<Book> selectBookIdName() {
        return IB.selectBookIdName();
 }
+  @Override
+  public int bookinstore()
+  {
+      return IB.bookinstore();
+  }
+  @Override
+  public int bookoutstore()
+  {
+      return IB.bookoutstore();
+  }
+          
   
 }

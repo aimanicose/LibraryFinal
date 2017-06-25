@@ -19,4 +19,6 @@ public interface IBook {
     Book selectBook(Book b);
     List<Book> selectListBook();
     List<Book> selectBookIdName();
+    int bookinstore();
+    int bookoutstore();
 }

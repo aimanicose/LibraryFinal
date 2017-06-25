@@ -27,5 +27,9 @@ public interface IBookService {
     List<Book> selectListBook();
    
     List<Book> selectBookIdName();
+    
+    int bookinstore();
+    
+    int bookoutstore();
        
 }
