@@ -238,7 +238,7 @@
             <div class="container"> 
                 <div class="row">
                     <div class="col-md-12"> 
-                        &copy; 2017 The OnlineLibrary | 62 Street 2 Maarif Casablanca Morocco</a>
+                        &copy; 2017 The OnlineLibrary | 62 Street 2 Maarif Casablanca Morocco Yassine ZMAN</a>
                     </div>
                     
                 </div>
