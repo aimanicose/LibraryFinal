@@ -30,9 +30,10 @@ IBook ib=new BookImpl();
 		{
 			c=ConnectionManager.getInstance().etablirconnection();
 			String req="insert into preter (UserID,BookID,DateSortie,Message) values("+p.getUser().getUserID()+","+p.getBook().getBookID()+",'"+p.getDateSortie()+"','"+p.getMessage()+"')";
-			//String req="insert into preter (UserID,BookID,DateSortie,Message) values("+p.getUser().getUserID()+","+p.getBook().getBookID()+",'"+p.getDateSortie()+"','"+p.getMessage()+"')";
+			String req1="Update book SET booksInStore=booksInStore - 1 WHERE BookID = "+p.getBook().getBookID()+"";
                         Statement st=c.createStatement();
-			st.execute(req);
+                        st.execute(req);
+			st.execute(req1);
 			bool=true;
 		}
 		catch(Exception e)
@@ -53,8 +54,10 @@ IBook ib=new BookImpl();
 		{
 			c=ConnectionManager.getInstance().etablirconnection();
 			String req="delete from preter WHERE UserID = "+p.getUser().getUserID()+"";
+                        String req1="Update book SET booksInStore=booksInStore + 1 WHERE BookID = "+p.getBook().getBookID()+"";
 			Statement st=c.createStatement();
 			st.execute(req);
+                        st.execute(req1);
 			bool=true;
 		}
 		catch(Exception e)
