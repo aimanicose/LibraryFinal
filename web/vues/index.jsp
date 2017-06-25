@@ -23,6 +23,15 @@
         <script src="<%=application.getContextPath() %>/vues/js/bootstrap-datepicker.min.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/script.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/dataScript.js"></script>
+       
+       
+         <%
+        if(session.getAttribute("userSession")==null)
+          {
+               response.sendRedirect("login.jsp");
+          }
+         
+        %>
     </head>
     <body>
         <header>
@@ -37,6 +46,7 @@
                 </div>
             </div>
         </header>
+        
         <!-- HEADER END-->
         <div class="navbar navbar-inverse set-radius-zero">
             <div class="container">
@@ -62,7 +72,7 @@
                                 <li><a href="borrowsList.jsp">Borrows</a></li>
                                 <li><a href="usersList.jsp">Users</a></li>
                                 <li><a href="forms.html">Shelfs</a></li>
-                                <li><a href="login.html">Log Out</a></li>
+                                <li><a href="<s:url action="logout" namespace="/vues" />">Log Out</a></li>
                             </ul>
                         </div>
                     </div>

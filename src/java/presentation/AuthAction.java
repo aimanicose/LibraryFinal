@@ -2,23 +2,32 @@ package presentation;
 
 
 import Models.User;
+import Service.IUserService;
+import Service.UserServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class AuthAction extends ActionSupport {
+    IUserService IU=new UserServiceImpl();
   private User bean;
   private User autheticationUser;
 
   public String connectUser(){
     
-    autheticationUser = bean;
+    autheticationUser = IU.selectUser(bean) ;
     
-    if(autheticationUser == null){
+    
+    if(autheticationUser == null)
+    {
       return "error";
     }
+    else
+    {
+      ServletActionContext.getRequest().getSession().setAttribute("userSession", autheticationUser.getLogin());
+      return "success"; 
+    }
 
-    ServletActionContext.getRequest().getSession().setAttribute("userSession", autheticationUser.getLogin());
-    return "success";
+   
   }
   
   @Override
@@ -37,5 +46,14 @@ public class AuthAction extends ActionSupport {
 
   public void setBean(User bean) {
     this.bean = bean;
+  }
+  public String logout(){
+    
+    
+      ServletActionContext.getRequest().getSession().invalidate();
+      return "success"; 
+    
+
+   
   }
 }

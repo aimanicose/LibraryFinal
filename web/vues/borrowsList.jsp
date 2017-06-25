@@ -19,6 +19,13 @@
         <script src="<%=application.getContextPath() %>/vues/js/jquery-3.2.1.min.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/bootstrap.min.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/script.js"></script>
+         <%
+        if(session.getAttribute("userSession")==null)
+          {
+               response.sendRedirect("login.jsp");
+          }
+         
+        %>
     </head>
     <body>
         <header>
@@ -57,7 +64,7 @@
                                 <li><a class="menu-top-active" href="borrowsList.jsp">Borrows</a></li>
                                 <li><a href="usersList.jsp">Users</a></li>
                                 <li><a href="forms.html">Shelfs</a></li>
-                                <li><a href="login.html">Log Out</a></li>
+                                <li><a href="<s:url action="logout" namespace="/vues" />">Log Out</a></li>
                             </ul>
                         </div>
                     </div>

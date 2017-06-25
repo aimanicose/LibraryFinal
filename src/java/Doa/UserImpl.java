@@ -148,7 +148,7 @@ Select select =new Select();
 		{
 			c=ConnectionManager.getInstance().etablirconnection();
                         
-			String req="select * from user where UserID ="+u.getUserID()+"";
+			String req="select * from user where login ='"+u.getLogin()+"' and password='"+u.getPassword()+"' ";
                       
                         Statement st=c.createStatement();
                         s=st.executeQuery(req);
