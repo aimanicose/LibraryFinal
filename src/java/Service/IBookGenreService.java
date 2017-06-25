@@ -5,10 +5,22 @@
  */
 package Service;
 
+import Models.BookGenre;
+import java.util.List;
+
 /**
  *
  * @author YS
  */
 public interface IBookGenreService {
     
+     boolean addBookGenre(BookGenre bg);
+     
+    boolean deleteBookGenre(BookGenre bg);
+    
+    boolean updateBookGenre(BookGenre bg);
+    
+    BookGenre selectBookGenre(BookGenre bg);
+    
+    List<BookGenre> selectListBookGenre();
 }

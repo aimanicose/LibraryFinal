@@ -8,6 +8,7 @@ package Doa;
 import Models.Book;
 import Models.BookGenre;
 import Models.Inventaire;
+import Models.User;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -19,7 +20,8 @@ import java.util.List;
  * @author YS
  */
 public class InventaireImpl implements IInventaire {
-
+IUser iu=new UserImpl();
+IBook ib=new BookImpl();
     @Override
     public boolean addInventaire(Inventaire i) {
         Connection c=null;
@@ -42,35 +44,42 @@ public class InventaireImpl implements IInventaire {
 		return bool;
     }
     @Override
-    public List<Inventaire> selectInventaire(Inventaire i) {
-       /* List<BookGenre> listbookgenre=new ArrayList<BookGenre>();
-        List<Book> listbook=null;
+    public List<Inventaire> selectInventaire() {
+        List<Inventaire> listinventaire=new ArrayList<Inventaire>();
+        Book book=null;
+        User u=null;
+        Inventaire i=null;
                 Connection c=null;
-		BookGenre b1=null;
                 ResultSet s;
 		try
 		{
 			c=ConnectionManager.getInstance().etablirconnection();              
-			String req="select * from bookgenre where GenreID="+bg.getGenreID()+"";
+			String req="select * from inventaire";
                       
                         Statement st=c.createStatement();
                       
-                     listbook = selectBooks(bg);
+                          //book =;
                       
                              s=st.executeQuery(req);
                         
 			
 			
 			while(s.next())
-			{
-			     b1=new BookGenre();
-                             b1.setGenreID(Integer.parseInt(s.getString("GenreID")));
-                             b1.setGenreName(s.getString("GenreName"));
-                             b1.setBookList(listbook);
-                             
+			{    i=new Inventaire();
+                             u=new User();
+                             book=new Book();
+                             u.setUserID(Integer.parseInt(s.getString("UserID")));
+                             book.setBookID(Integer.parseInt(s.getString("BookID")));
+                             u=iu.selectUser(u);
+                             book=ib.selectBook(book);
+                             i.setBook(book);
+                             i.setUser(u);
+                             i.setDateEntree(s.getString("DateEntree"));
+                             i.setDateSortie(s.getString("DateSortie"));
+                             listinventaire.add(i);
                               
                                 
-                              listbookgenre.add(b1);
+                              
 
 			}
                         
@@ -83,14 +92,8 @@ public class InventaireImpl implements IInventaire {
 			ConnectionManager.getInstance().fermerConnection(c);
 		}
 		
-		return listbookgenre;*/
-       return null;
+		return listinventaire;
+      
     }
-
-    @Override
-    public boolean updateInventaire(Inventaire i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     
 }

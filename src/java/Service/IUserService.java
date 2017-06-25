@@ -5,10 +5,22 @@
  */
 package Service;
 
+import Models.User;
+import java.util.List;
+
 /**
  *
  * @author YS
  */
 public interface IUserService {
     
+    boolean addUser(User u);
+    
+    boolean deleteUser(User u);
+    
+    boolean updateUser(User u);
+    
+    User selectUser(User u);
+    
+    List<User> selectListUser();
 }

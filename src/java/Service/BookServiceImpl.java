@@ -10,21 +10,29 @@ import Doa.IBook;
 import Models.Book;
 import java.util.List;
 
+
+
+
+
+
+
+
 /**
  *
  * @author YS
  */
+
 public class BookServiceImpl implements IBookService {
 IBook IB=new BookImpl();
     
     @Override
     public boolean addBook(Book b) {
-     return IB.addBook(b);
+        return IB.addBook(b);
     }
 
     @Override
     public boolean deleteBook(Book b) {
-       return IB.deleteBook(b);
+        return IB.deleteBook(b);
     }
 
     @Override
@@ -39,12 +47,12 @@ IBook IB=new BookImpl();
 
     @Override
     public List<Book> selectListBook() {
+
         return IB.selectListBook();
     }
-
-  @Override
+    @Override
   public List<Book> selectBookIdName() {
        return IB.selectBookIdName();
-  }
-    
+}
+  
 }

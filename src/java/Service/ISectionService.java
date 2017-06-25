@@ -5,10 +5,22 @@
  */
 package Service;
 
+import Models.Section;
+import java.util.List;
+
 /**
  *
  * @author YS
  */
 public interface ISectionService {
     
+    boolean addSection(Section s);
+    
+    boolean deleteSection(Section s);
+    
+    boolean updateSection(Section s);
+    
+    Section selectSection(Section s);
+    
+    List<Section> selectListSection();
 }

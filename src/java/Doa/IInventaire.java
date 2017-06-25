@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface IInventaire {
     boolean addInventaire(Inventaire i);
-    boolean updateInventaire(Inventaire i);
-    List<Inventaire> selectInventaire(Inventaire i);
+    
+    List<Inventaire> selectInventaire();
 }

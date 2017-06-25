@@ -5,20 +5,22 @@
  */
 package Service;
 
-import Models.Preter;
+import Models.Profile;
 import java.util.List;
 
 /**
  *
  * @author YS
  */
-public interface IPreterService {
+public interface IProfileService {
     
-    boolean addPreter(Preter p);
+    boolean addProfil(Profile p);
     
-    boolean deletePreter(Preter p);
+    boolean deleteProfil(Profile p);
     
-    boolean updatePreter(Preter p);
+    boolean updateProfil(Profile p);
     
-    List<Preter> selectPreter();
+    Profile selectProfil(Profile p);
+    
+    List<Profile> selectListProfil();
 }
