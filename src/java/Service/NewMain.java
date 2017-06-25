@@ -41,7 +41,7 @@ public class NewMain {
        IInventaireService iis=new InventaireServiceImpl();
        IPreterService ips=new PreterServiceImpl();
       
-      /* User u=new User();
+      User u=new User();
        Book b=new Book();
        u.setUserID(1);
        
@@ -51,9 +51,9 @@ public class NewMain {
        p.setUser(u);
        p.setMessage("test1");
        p.setDateSortie("2017-01-17");
-       ips.addPreter(p);*/
+       ips.addPreter(p);
        
-     System.out.println(IB.bookoutstore());
+    // System.out.println(IB.bookoutstore());
        
   
       /*Gson objGson = new GsonBuilder().setPrettyPrinting().create();
