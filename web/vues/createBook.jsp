@@ -19,7 +19,7 @@
         <link href="<%=application.getContextPath() %>/vues/css/bootstrap-directional-buttons.min.css" rel="stylesheet">
         <script src="<%=application.getContextPath() %>/vues/js/jquery-3.2.1.min.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/bootstrap.min.js"></script>
-        <script src="<%=application.getContextPath() %>/vues/js/script.js"></script>
+        <script src="<%=application.getContextPath() %>/vues/js/booksScript.js"></script>
  <%
         if(session.getAttribute("userSession")==null)
           {

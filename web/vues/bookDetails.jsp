@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/style.css" >
 <script src="<%=application.getContextPath() %>/vues/js/jquery-3.2.1.min.js"></script>
 <script src="<%=application.getContextPath() %>/vues/js/bootstrap.min.js"></script>
-<script src="<%=application.getContextPath() %>/vues/js/script.js"></script>
+<script src="<%=application.getContextPath() %>/vues/js/booksScript.js"></script>
 
 <% 
     Book detailedBook = (Book)session.getAttribute("detailedBook");

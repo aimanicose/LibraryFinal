@@ -21,16 +21,14 @@
         <script src="<%=application.getContextPath() %>/vues/js/bootstrap.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/jquery-ui.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/bootstrap-datepicker.min.js"></script>
-        <script src="<%=application.getContextPath() %>/vues/js/script.js"></script>
+        <script src="<%=application.getContextPath() %>/vues/js/indexScript.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/dataScript.js"></script>
        
        
          <%
-        if(session.getAttribute("userSession")==null)
-          {
+        if(session.getAttribute("userSession")==null){
                response.sendRedirect("login.jsp");
-          }
-         
+        }  
         %>
     </head>
     <body>
@@ -94,7 +92,7 @@
                             <a href="#">
                                 <i  class="fa fa-book dashboard-div-icon" ></i>
                             </a>
-                            <h3>1500<h3/>
+                            <h3 id="booksInStore">0<h3/>
                                 <h5>Books in store</h5>
                         </div>
                     </div>
@@ -103,7 +101,7 @@
                             <a href="#">
                                 <i  class="fa fa-edit dashboard-div-icon" ></i>
                             </a>
-                            <h3>321<h3/>
+                            <h3 id="booksOutStore">0<h3/>
                                 <h5>Books out of store</h5>
                         </div>
                     </div>
@@ -157,18 +155,18 @@
                                         <label>Borrowing Date :  </label>
                                     </row>
                                     <row>
-                                        <div class="input-group date" data-provide="datepicker">
-                                            <input type="text" class="form-control" data-date-format="dd/mm/yyyy" name="borrowDate">
-                                                <div class="input-group-addon">
-                                                    <span class="glyphicon glyphicon-th"></span>
-                                                </div>
+                                        <div class="input-group date">
+                                            <input id="datepicker" type="text" class="form-control"  name="borrowDate">
+                                            <div class="input-group-addon">
+                                                  <i class="ace-icon fa fa-calendar"></i>
+                                            </div>
                                         </div> 
                                     </row>
                                     <row>
                                         <label>Enter Message : </label>  
                                     </row>
                                     <row>
-                                        <textarea rows="9" class="form-control" name="borrowSumary"></textarea>
+                                        <textarea rows="6" class="form-control" name="borrowSumary"></textarea>
                                     </row>
                                     <hr />
                                     <button type="submit" href="#" class="btn btn-warning"><span class="glyphicon glyphicon-paperclip"></span> Allocate Book </button>&nbsp;

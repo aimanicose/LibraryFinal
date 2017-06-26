@@ -10,6 +10,9 @@ import Service.BookServiceImpl;
 import Service.IBookService;
 import Service.IPreterService;
 import Service.PreterServiceImpl;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -19,6 +22,7 @@ import java.util.List;
 
 public class BooksAction extends ActionSupport {
   private InputStream stream;
+  private InputStream inOutBooks;
   private int bookId;
   private String firstName;
   private String editor;
@@ -114,6 +118,18 @@ public class BooksAction extends ActionSupport {
     }
     
     return "success";
+  }
+  
+  public String booksNumber(){
+    List<String> booksNumber = new ArrayList<String>();
+    IBookService bookService = new BookServiceImpl();
+    booksNumber.add(Integer.toString(bookService.bookinstore()));
+    booksNumber.add(Integer.toString(bookService.bookoutstore()));
+    GsonBuilder gb = new GsonBuilder();
+    Gson s = gb.create();
+    String jsonResponse = s.toJson(booksNumber);
+    inOutBooks = new ByteArrayInputStream(jsonResponse.getBytes());
+    return SUCCESS;
   }
   
   public int getBookId() {
@@ -233,5 +249,14 @@ public class BooksAction extends ActionSupport {
   public void setBorrowSumary(String borrowSumary) {
     this.borrowSumary = borrowSumary;
   }
+
+  public InputStream getInOutBooks() {
+    return inOutBooks;
+  }
+
+  public void setInOutBooks(InputStream inOutBooks) {
+    this.inOutBooks = inOutBooks;
+  }
+
   
 }

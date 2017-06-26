@@ -10,12 +10,25 @@ var autocompleteInput = function (field) {
                     books.push(item.bookName);
                 });
                
-                 
-                  $( "#"+field ).autocomplete({
-                    source: books
-                  });
+                $( "#"+field ).autocomplete({
+                  source: books
+                });
             }
         }
     }); 
 };
-$(document).ready(autocompleteInput("book1"));
+
+var booksInOutStore = function (inBook,outBook) {
+    $.ajax({
+        url : "http://localhost:8080/Library_Final/vues/booksNumber.action",
+        type : "GET",
+        success : function(data) {
+            if(data){
+                data = JSON.parse(data);
+               
+                $("#"+inBook).text(data[0]);
+                $("#"+outBook).text(data[1]);
+            }
+        }
+    }); 
+};

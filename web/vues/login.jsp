@@ -13,6 +13,8 @@
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/bootstrap.css" >
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/font-awesome.css" >
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/style.css" >
+        <script src="<%=application.getContextPath() %>/vues/js/jquery-1.11.1.js"></script>
+        <script src="<%=application.getContextPath() %>/vues/js/bootstrap.js"></script>
     </head>
     <body>
         <header>
@@ -64,7 +66,7 @@
                             <s:password name="bean.password" key="user.password" cssClass="form-control"/><s:fielderror name="errorPassword"/>
                             <hr />
                             <button type="submit" class="btn btn-info">
-                                Log Me In <span class="glyphicon glyphicon-user"></span>
+                                <span class="glyphicon glyphicon-user"></span> Log Me In
                             </button>
                         </form>
                     </div>
@@ -96,7 +98,5 @@
                 </div>
             </div>
         </footer>
-        <script src="<%=application.getContextPath() %>/vues/js/jquery-1.11.1.js"></script>
-        <script src="<%=application.getContextPath() %>/vues/js/bootstrap.js"></script>
     </body>
 </html>

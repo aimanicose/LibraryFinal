@@ -16,9 +16,15 @@
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/bootstrap.min.css" >
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/font-awesome.css" >
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/style.css" >
-        <script src="<%=application.getContextPath() %>/vues/js/jquery-3.2.1.min.js"></script>
+        <link rel="stylesheet" href="<%=application.getContextPath() %>/vues/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+        <script src="<%=application.getContextPath() %>/vues/js/jquery-1.11.1.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/bootstrap.min.js"></script>
-        <script src="<%=application.getContextPath() %>/vues/js/script.js"></script>
+         
+        <script src="<%=application.getContextPath() %>/vues/js/dataTable/jquery.dataTables.min.js"></script>
+        <script src="<%=application.getContextPath() %>/vues/js/dataTable/jquery.dataTables.bootstrap.min.js"></script>
+        <script src="<%=application.getContextPath() %>/vues/js/dataTable/dataTables.buttons.min.js"></script>
+        <script src="<%=application.getContextPath() %>/vues/js/dataTable/buttons.flash.min.js"></script>
+        <script src="<%=application.getContextPath() %>/vues/js/dataTable/buttons.print.min.js"></script>
          <%
         if(session.getAttribute("userSession")==null)
           {
@@ -80,64 +86,215 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                       <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover">
+                    <div class="clearfix">
+                        <div class="pull-right tableTools-container"></div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Books currently allocated and their holders
+                        </div>
+                        <div class="panel-body">
+                            <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Ref. No.</th>
-                                        <th>Date</th>
-                                        <th>Amount</th>
-                                        <th>Status</th>
-                                        <th>Delivery On </th>
-                                        <th># #</th>
+                                        <th  class="center">Domain</th>
+                                        <th>Price</th>
+                                        <th class="hidden-480">Clicks</th>
+                                        <th>
+                                            <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+                                            Update
+                                        </th>
+                                        <th class="hidden-480">Status</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
-                                    
                                     <tr>
-                                        <td># 2501</td>
-                                        <td>01/22/2015 </td>
-                                        <td>
-                                            <label class="label label-info">300 USD </label>
+                                        <td class="center">
+                                            <a href="#">app.com</a>
+                                        </td>
+                                        <td>$45</td>
+                                        <td class="hidden-480">3,330</td>
+                                        <td>Feb 12</td>
+                                        <td class="hidden-480">
+                                            <span class="label label-sm label-warning">Expiring</span>
                                         </td>
                                         <td>
-                                            <label class="label label-success">Delivered</label></td>
-                                        <td>01/25/2015</td>
-                                        <td> <a href="#"  class="btn btn-xs btn-danger"  >View</a> </td>
+                                            <div class="hidden-sm hidden-xs action-buttons">
+                                                    <a class="blue" href="#">
+                                                            <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                                                    </a>
+
+                                                    <a class="green" href="#">
+                                                            <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                                    </a>
+
+                                                    <a class="red" href="#">
+                                                            <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                                    </a>
+                                            </div>
+
+                                            <div class="hidden-md hidden-lg">
+                                                    <div class="inline pos-rel">
+                                                            <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                                                    <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+                                                            </button>
+
+                                                            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                                                    <li>
+                                                                            <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
+                                                                                    <span class="blue">
+                                                                                            <i class="ace-icon fa fa-search-plus bigger-120"></i>
+                                                                                    </span>
+                                                                            </a>
+                                                                    </li>
+
+                                                                    <li>
+                                                                            <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+                                                                                    <span class="green">
+                                                                                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                                                                    </span>
+                                                                            </a>
+                                                                    </li>
+
+                                                                    <li>
+                                                                            <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+                                                                                    <span class="red">
+                                                                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                                                    </span>
+                                                                            </a>
+                                                                    </li>
+                                                            </ul>
+                                                    </div>
+                                            </div>
+                                        </td>
                                     </tr>
+
                                     <tr>
-                                        <td># 15091</td>
-                                        <td>12/12/2014 </td>
-                                        <td>
-                                            <label class="label label-danger">7000 USD </label>
-                                        </td>
-                                        <td>
-                                            <label class="label label-warning">Shipped</label></td>
-                                        <td>N/A</td>
-                                        <td> <a href="#"  class="btn btn-xs btn-success"  >View</a> </td>
+                                            <td class="center">
+                                                    <a href="#">base.com</a>
+                                            </td>
+                                            <td>$35</td>
+                                            <td class="hidden-480">2,595</td>
+                                            <td>Feb 18</td>
+
+                                            <td class="hidden-480">
+                                                    <span class="label label-sm label-success">Registered</span>
+                                            </td>
+
+                                            <td>
+                                                    <div class="hidden-sm hidden-xs action-buttons">
+                                                            <a class="blue" href="#">
+                                                                    <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                                                            </a>
+
+                                                            <a class="green" href="#">
+                                                                    <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                                            </a>
+
+                                                            <a class="red" href="#">
+                                                                    <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                                            </a>
+                                                    </div>
+
+                                                    <div class="hidden-md hidden-lg">
+                                                            <div class="inline pos-rel">
+                                                                    <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                                                            <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+                                                                    </button>
+
+                                                                    <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                                                            <li>
+                                                                                    <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
+                                                                                            <span class="blue">
+                                                                                                    <i class="ace-icon fa fa-search-plus bigger-120"></i>
+                                                                                            </span>
+                                                                                    </a>
+                                                                            </li>
+
+                                                                            <li>
+                                                                                    <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+                                                                                            <span class="green">
+                                                                                                    <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                                                                            </span>
+                                                                                    </a>
+                                                                            </li>
+
+                                                                            <li>
+                                                                                    <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+                                                                                            <span class="red">
+                                                                                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                                                            </span>
+                                                                                    </a>
+                                                                            </li>
+                                                                    </ul>
+                                                            </div>
+                                                    </div>
+                                            </td>
                                     </tr>
+
                                     <tr>
-                                        <td># 11291</td>
-                                        <td>12/03/2014 </td>
-                                        <td>
-                                            <label class="label label-warning">7000 USD </label>
-                                        </td>
-                                        <td>
-                                            <label class="label label-success">Delivered</label></td>
-                                        <td>01/23/2015</td>
-                                        <td> <a href="#"  class="btn btn-xs btn-primary"  >View</a> </td>
-                                    </tr>
-                                    <tr>
-                                        <td># 1808</td>
-                                        <td>11/10/2014 </td>
-                                        <td>
-                                            <label class="label label-success">2000 USD </label>
-                                        </td>
-                                        <td>
-                                            <label class="label label-info">Returned</label></td>
-                                        <td>N/A</td>
-                                        <td> <a href="#"  class="btn btn-xs btn-danger"  >View</a> </td>
+                                            <td class="center">
+                                                <a href="#">up.com</a>
+                                            </td>
+                                            <td>$95</td>
+                                            <td class="hidden-480">8,520</td>
+                                            <td>Feb 22</td>
+
+                                            <td class="hidden-480">
+                                                    <span class="label label-sm label-info arrowed arrowed-righ">Sold</span>
+                                            </td>
+
+                                            <td>
+                                                    <div class="hidden-sm hidden-xs action-buttons">
+                                                            <a class="blue" href="#">
+                                                                    <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                                                            </a>
+
+                                                            <a class="green" href="#">
+                                                                    <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                                            </a>
+
+                                                            <a class="red" href="#">
+                                                                    <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                                            </a>
+                                                    </div>
+
+                                                    <div class="hidden-md hidden-lg">
+                                                            <div class="inline pos-rel">
+                                                                    <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                                                            <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+                                                                    </button>
+
+                                                                    <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                                                            <li>
+                                                                                    <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
+                                                                                            <span class="blue">
+                                                                                                    <i class="ace-icon fa fa-search-plus bigger-120"></i>
+                                                                                            </span>
+                                                                                    </a>
+                                                                            </li>
+
+                                                                            <li>
+                                                                                    <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+                                                                                            <span class="green">
+                                                                                                    <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                                                                            </span>
+                                                                                    </a>
+                                                                            </li>
+
+                                                                            <li>
+                                                                                    <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+                                                                                            <span class="red">
+                                                                                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                                                            </span>
+                                                                                    </a>
+                                                                            </li>
+                                                                    </ul>
+                                                            </div>
+                                                    </div>
+                                            </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -156,5 +313,6 @@
                 </div>
             </div>
         </footer>
+        <script src="<%=application.getContextPath() %>/vues/js/borrowScript.js"></script>
     </body>
 </html>

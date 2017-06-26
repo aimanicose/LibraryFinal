@@ -17,9 +17,12 @@
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/bootstrap.min.css" >
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/font-awesome.css" >
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/style.css" >
+        <link rel="stylesheet" href="<%=application.getContextPath() %>/vues/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
         <script src="<%=application.getContextPath() %>/vues/js/jquery-3.2.1.min.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/bootstrap.min.js"></script>
-        <script src="<%=application.getContextPath() %>/vues/js/script.js"></script>
+        
+        <script src="<%=application.getContextPath() %>/vues/js/dataTable/jquery.dataTables.min.js"></script>
+        <script src="<%=application.getContextPath() %>/vues/js/dataTable/jquery.dataTables.bootstrap.min.js"></script>
         <%
         if(session.getAttribute("userSession")==null)
           {
@@ -61,7 +64,7 @@
                         <div class="navbar-collapse collapse ">
                             <ul id="menu-top" class="nav navbar-nav navbar-right">
                                 <li><a  href="index.jsp">Dashboard</a></li>   
-                                <li><a class="menu-top-active" href="booksList.jsp">Books</a></li>
+                                <li><a class="menu-top-active" href="<s:url action="redirectBooks" namespace="/vues" />">Books</a></li>
                                 <li><a href="borrowsList.jsp">Borrows</a></li>
                                 <li><a href="usersList.jsp">Users</a></li>
                                 <li><a href="forms.html">Shelfs</a></li>
@@ -92,20 +95,9 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Books currently in library 
-                                <input type="text" id="bookSearchInput" onkeyup="filterBooks()" placeholder="Search by" class="filterButton">
-                                 <select id="bookFilter" class="filterSelect" onchange="clearFilterInput()">
-                                    <option value="1">Book's Name</option>
-                                    <option value="2">Author's Name</option>
-                                    <option value="3">Book's Editor</option>
-                                    <option value="4">Book's Genre</option>
-                                    <option value="5">Book's Language</option>
-                                    <option value="6">Book's Publication</option>
-                                    <option value="7">Books in Library</option>
-                                </select>   
                             </div>
                             <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table id="booksTable" class="table table-striped table-bordered table-hover">
+                                  <table id="books-table" class="table table-striped table-bordered table-hover">
                                         <thead>
                                             <tr>
                                                 <th class="pointer" onclick="sortTable(0)">#</th>
@@ -150,7 +142,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div id="pagination"></div>
                             </div>
                         </div>
                     </div>
@@ -167,5 +158,6 @@
                 </div>
             </div>
         </footer>
+        <script src="<%=application.getContextPath() %>/vues/js/booksScript.js"></script>
     </body>
 </html>
