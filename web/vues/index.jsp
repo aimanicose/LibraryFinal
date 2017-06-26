@@ -89,7 +89,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="dashboard-div-wrapper bk-clr-one">
-                            <a href="#">
+                            <a href="<s:url action="redirectBooks" namespace="/vues" />">
                                 <i  class="fa fa-book dashboard-div-icon" ></i>
                             </a>
                             <h3 id="booksInStore">0<h3/>
