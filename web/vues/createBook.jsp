@@ -20,12 +20,15 @@
         <script src="<%=application.getContextPath() %>/vues/js/jquery-3.2.1.min.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/bootstrap.min.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/booksScript.js"></script>
- <%
-        if(session.getAttribute("userSession")==null)
-          {
-               response.sendRedirect("login.jsp");
+        <%
+          response.setHeader("Cache-Control","no-cache");
+          response.setHeader("Cache-Control","no-store");
+          response.setHeader("Pragma","no-cache");
+          response.setDateHeader ("Expires", 0);
+
+          if(session.getAttribute("userSession")==null){
+            response.sendRedirect("login.jsp");
           }
-         
         %>
     </head>
     <body>

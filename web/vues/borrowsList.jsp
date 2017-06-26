@@ -25,12 +25,15 @@
         <script src="<%=application.getContextPath() %>/vues/js/dataTable/dataTables.buttons.min.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/dataTable/buttons.flash.min.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/dataTable/buttons.print.min.js"></script>
-         <%
-        if(session.getAttribute("userSession")==null)
-          {
+        <%
+            response.setHeader("Cache-Control","no-cache");
+            response.setHeader("Cache-Control","no-store");
+            response.setHeader("Pragma","no-cache");
+            response.setDateHeader ("Expires", 0);
+
+            if(session.getAttribute("userSession")==null){
                response.sendRedirect("login.jsp");
-          }
-         
+            } 
         %>
     </head>
     <body>
