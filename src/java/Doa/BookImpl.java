@@ -15,9 +15,7 @@ import java.util.List;
  * @author YS
  */
 public class BookImpl implements IBook {
-  IAuthor ia = new AuthorImpl();
-  IEditor ie=new EditorImpl();
-  IBookGenre ibg=new BookGenreImpl();
+  Select select=new Select();
   Author a=new Author();
   Editor e =new Editor();
   BookGenre bg=new BookGenre();
@@ -115,9 +113,9 @@ public class BookImpl implements IBook {
         a.setAuthorID(Integer.parseInt(s.getString("AuthorID")));
         e.setEditorID(Integer.parseInt(s.getString("EditorID")));
         bg.setGenreID(Integer.parseInt(s.getString("GenreID")));
-        a=ia.selectAuthor(a);
-        e=ie.selectEditor(e);
-        bg=ibg.selectBookGenre(bg);
+        a=select.selectAuthor(a);
+        e=select.selectEditor(e);
+        bg=select.selectBookGenre(bg);
         b1= new Book();
         b1.setBookID(Integer.parseInt(s.getString("BookID")));
         b1.setBookLanguage(s.getString("BookLanguage"));
@@ -168,9 +166,9 @@ public class BookImpl implements IBook {
         a.setAuthorID(Integer.parseInt(s.getString("AuthorID")));
         e.setEditorID(Integer.parseInt(s.getString("EditorID")));
         bg.setGenreID(Integer.parseInt(s.getString("GenreID")));
-        a=ia.selectAuthor(a);
-        e=ie.selectEditor(e);
-        bg=ibg.selectBookGenre(bg);
+        a=select.selectAuthor(a);
+        e=select.selectEditor(e);
+        bg=select.selectBookGenre(bg);
         b1= new Book();
         b1.setBookID(Integer.parseInt(s.getString("BookID")));
         b1.setBookLanguage(s.getString("BookLanguage"));

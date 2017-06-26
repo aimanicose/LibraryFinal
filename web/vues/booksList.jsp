@@ -23,13 +23,16 @@
         
         <script src="<%=application.getContextPath() %>/vues/js/dataTable/jquery.dataTables.min.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/dataTable/jquery.dataTables.bootstrap.min.js"></script>
-        <%
-        if(session.getAttribute("userSession")==null)
-          {
-               response.sendRedirect("login.jsp");
-          }
-         
-        %>
+         <%
+  response.setHeader("Cache-Control","no-cache");
+  response.setHeader("Cache-Control","no-store");
+  response.setHeader("Pragma","no-cache");
+  response.setDateHeader ("Expires", 0);
+
+  if(session.getAttribute("userSession")==null)
+      response.sendRedirect("login.jsp");
+
+  %>
     </head>
     <body>
         <header>

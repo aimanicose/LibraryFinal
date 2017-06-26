@@ -17,7 +17,7 @@
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/bootstrap-datepicker.min.css" />    
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/typehead.css" />   
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/jquery-ui.css" /> 
-        <script src="<%=application.getContextPath() %>/vues/js/jquery-1.11.1.js"></script>
+        <script src="<%=application.getContextPath() %>/vues/js/jquery-3.2.1.min.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/bootstrap.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/jquery-ui.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/bootstrap-datepicker.min.js"></script>

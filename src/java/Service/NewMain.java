@@ -41,25 +41,38 @@ public class NewMain {
        IInventaireService iis=new InventaireServiceImpl();
        IPreterService ips=new PreterServiceImpl();
       
-      User u=new User();
+      /* User u=new User();
        Book b=new Book();
-       u.setUserID(1);
+       Author a=new Author();
+       a.setAuthorID(1);
+       Editor e=new Editor();
+       BookGenre bg=new BookGenre();
+       e.setEditorID(2);
+       bg.setGenreID(1);
        
-       b.setBookID(1);
-       Preter p=new Preter();
-       p.setBook(b);
-       p.setUser(u);
-       p.setMessage("test1");
-       p.setDateSortie("2017-01-17");
-       ips.addPreter(p);
+       for(int i=2;i<51;i++)
+       {
+           b.setBookID(i);
+           b.setBookAuthor(a);
+           b.setBookEditor(e);
+           b.setBookGenre(bg);
+           b.setBooksInStore(4);
+           b.setBookPrice(15.10);
+           b.setBookPublicationDate("2017-01-15");
+           
+           IB.addBook(b);
+       }*/
+       
+       
+      
        
     // System.out.println(IB.bookoutstore());
        
   
-      /*Gson objGson = new GsonBuilder().setPrettyPrinting().create();
+      Gson objGson = new GsonBuilder().setPrettyPrinting().create();
        System.out.println("1.Convert list of book objects to Json");
-       String json = objGson.toJson(ips.selectPreter());
-       System.out.println(json);*/
+       String json = objGson.toJson(IB.selectListBook());
+       System.out.println(json);
            //FileWriter fileWriter = new FileWriter("D:\\books.json");
            // fileWriter.write(json);
            // fileWriter.close();

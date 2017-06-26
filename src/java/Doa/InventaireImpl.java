@@ -6,7 +6,6 @@
 package Doa;
 
 import Models.Book;
-import Models.BookGenre;
 import Models.Inventaire;
 import Models.User;
 import java.sql.Connection;
