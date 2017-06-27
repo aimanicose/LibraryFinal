@@ -30,7 +30,7 @@
     <div class="modal-body">
 
         <div class="col-md-4"> 
-            <img src="<%=application.getContextPath() %>/vues/img/bookCovers/<%=detailedBook.getBookImageId()%>.png" alt="teste" class="img-thumbnail">
+            <img src="<%=application.getContextPath() %>/vues/img/bookCovers/<%=detailedBook.getBookImageId()%>.png" alt="<%=application.getContextPath() %>/vues/img/bookCovers/placeholder.png" class="img-thumbnail">
             <div id="editBookButtons" class="">
                 <a id="updateBook" onclick="updateBook()" class="btn btn-block btn-success"><span class="glyphicon glyphicon-edit"></span> Edit Book</a>
                 <a id="deleteBook" onclick="deleteBook(<%=detailedBook.getBookID()%>)" class="btn btn-block btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete Book</a>

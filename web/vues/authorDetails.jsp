@@ -18,10 +18,9 @@
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/bootstrap.min.css" >
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/font-awesome.css" >
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/style.css" >
-        <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/listnav.css" >
         <link href="<%=application.getContextPath() %>/vues/css/bootstrap-directional-buttons.min.css" rel="stylesheet">
         <script src="<%=application.getContextPath() %>/vues/js/jquery-3.2.1.min.js"></script>
-        <script src="<%=application.getContextPath() %>/vues/js/dataTable/jquery-listnav.min.js"></script>
+        <script src="<%=application.getContextPath() %>/vues/js/bootstrap.min.js"></script>
         
          <%
             response.setHeader("Cache-Control","no-cache");
@@ -32,6 +31,9 @@
             if(session.getAttribute("userSession")==null){
               response.sendRedirect("login.jsp");
             }
+        %>
+        <% 
+            Author detailedAuthor = (Author)session.getAttribute("detailedAuthor");
         %>
     </head>
     <body>
@@ -90,7 +92,43 @@
                         <h4 class="page-head-line">Author's Details</h4>
                     </div>
                 </div>
-               
+                <div class="row">
+                    <div class="col-md-3">
+                         <img src="<%=application.getContextPath() %>/vues/img/bookCovers/<%=detailedAuthor.getAuthorImageID()%>.png" alt="/vues/img/authorsPictures/placeholder.png" class="img-thumbnail">
+                    </div>
+                    <div class="col-md-9">
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs" id="myTab">
+                            <li class="active">
+                                <a data-toggle="tab" href="#home">
+                                    <i class="green ace-icon fa  fa-book bigger-120"></i>
+                                    Bio
+                                </a>
+                            </li>
+
+                            <li>
+                                <a data-toggle="tab" href="#messages">
+                                    <i class="green ace-icon fa  fa-comment bigger-120"></i>
+                                    Books
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="home" class="tab-pane fade in active">
+                                    <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+                            </div>
+
+                            <div id="messages" class="tab-pane fade">
+                                    <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- CONTENT-WRAPPER SECTION END-->

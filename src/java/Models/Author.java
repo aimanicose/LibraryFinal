@@ -18,6 +18,8 @@ public class Author implements Serializable {
 	private String authorNationality;
 	private String authorSexe;
 	private List<Book> bookList;
+        private String authorBiography;
+        private String authorImageID;
 
     /**
      * @return the authorBirthDate
@@ -117,6 +119,22 @@ public class Author implements Serializable {
         this.bookList = bookList;
     }
 
+  public String getAuthorBiography() {
+    return authorBiography;
+  }
+
+  public void setAuthorBiography(String authorBiography) {
+    this.authorBiography = authorBiography;
+  }
+
+  public String getAuthorImageID() {
+    return authorImageID;
+  }
+
+  public void setAuthorImageID(String authorImageID) {
+    this.authorImageID = authorImageID;
+  }
+    
 
 }
 
