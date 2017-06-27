@@ -9,7 +9,6 @@ import Models.Author;
 import Models.Book;
 import Models.BookGenre;
 import Models.Editor;
-import Models.Inventaire;
 import Models.Preter;
 import Models.Profile;
 import Models.Section;
@@ -38,7 +37,6 @@ public class NewMain {
        IProfileService ip=new ProfileServiceImpl();
        ISectionService is=new SectionServiceImpl();
        IUserService iu = new UserServiceImpl();
-       IInventaireService iis=new InventaireServiceImpl();
        IPreterService ips=new PreterServiceImpl();
       
       /* User u=new User();

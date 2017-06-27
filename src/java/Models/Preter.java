@@ -12,7 +12,9 @@ public class Preter {
 	private User User;
         private String DateSortie;
         private String Message;
-        
+        private String DateEntree;
+        private String Statut;
+        private String Reference;
 
     /**
      * @return the Book
@@ -68,6 +70,48 @@ public class Preter {
      */
     public void setMessage(String Message) {
         this.Message = Message;
+    }
+
+    /**
+     * @return the DateEntree
+     */
+    public String getDateEntree() {
+        return DateEntree;
+    }
+
+    /**
+     * @param DateEntree the DateEntree to set
+     */
+    public void setDateEntree(String DateEntree) {
+        this.DateEntree = DateEntree;
+    }
+
+    /**
+     * @return the Statut
+     */
+    public String getStatut() {
+        return Statut;
+    }
+
+    /**
+     * @param Statut the Statut to set
+     */
+    public void setStatut(String Statut) {
+        this.Statut = Statut;
+    }
+
+    /**
+     * @return the Reference
+     */
+    public String getReference() {
+        return Reference;
+    }
+
+    /**
+     * @param Reference the Reference to set
+     */
+    public void setReference(String Reference) {
+        this.Reference = Reference;
     }
 
 	

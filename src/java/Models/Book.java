@@ -13,7 +13,6 @@ public class Book implements Serializable {
   private Author bookAuthor;
   private Editor bookEditor;
   private BookGenre bookGenre;
-  
   private int bookID;
   private String bookLanguage;
   private String bookName;

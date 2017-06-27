@@ -6,7 +6,6 @@
 package Doa;
 
 import Models.Book;
-import Models.Inventaire;
 import Models.Preter;
 import Models.User;
 import java.sql.Connection;
@@ -29,7 +28,7 @@ IBook ib=new BookImpl();
 		try
 		{
 			c=ConnectionManager.getInstance().etablirconnection();
-			String req="insert into preter (UserID,BookID,DateSortie,Message) values("+p.getUser().getUserID()+",(Select bookId from Book where bookName = '"+p.getBook().getBookName()+"'),'"+p.getDateSortie()+"','"+p.getMessage()+"')";
+			String req="insert into preter (UserID,BookID,DateSortie,Message,Reference,Statut,DateEntree) values("+p.getUser().getUserID()+",(Select bookId from Book where bookName = '"+p.getBook().getBookName()+"'),'"+p.getDateSortie()+"','"+p.getMessage()+"','"+p.getReference()+"','"+p.getStatut()+"','"+p.getDateEntree()+"')";
 			String req1="Update book SET booksInStore=booksInStore - 1 WHERE BookName = '"+p.getBook().getBookName()+"'";
                         Statement st=c.createStatement();
                         st.execute(req);
@@ -77,7 +76,7 @@ IBook ib=new BookImpl();
 		try
 		{
 			c=ConnectionManager.getInstance().etablirconnection();
-			String req="Update preter SET BookID="+p.getBook().getBookID()+",DateSortie='"+p.getDateSortie()+"',Message='"+p.getMessage()+"' WHERE UserID = "+p.getUser().getUserID()+"";
+			String req="Update preter SET BookID="+p.getBook().getBookID()+",DateSortie='"+p.getDateSortie()+"',Message='"+p.getMessage()+"',Reference='"+p.getReference()+"',Statut='"+p.getStatut()+"',DateEntree='"+p.getDateEntree()+"' WHERE UserID = "+p.getUser().getUserID()+"";
 			Statement st=c.createStatement();
 			st.execute(req);
 			bool=true;
@@ -122,6 +121,9 @@ IBook ib=new BookImpl();
                              p.setUser(u);
                              p.setMessage(s.getString("Message"));
                              p.setDateSortie(s.getString("DateSortie"));
+                             p.setReference(s.getString("Reference"));
+                             p.setDateEntree(s.getString("DateEntree"));
+                             p.setStatut(s.getString("Statut"));
                              listpreter.add(p);
                               
                                 
