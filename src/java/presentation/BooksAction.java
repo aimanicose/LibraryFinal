@@ -1,9 +1,6 @@
 package presentation;
 
 import Models.Book;
-import Models.Author;
-import Models.BookGenre;
-import Models.Editor;
 import Models.Preter;
 import Models.User;
 import Service.BookServiceImpl;
@@ -14,13 +11,26 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import org.apache.struts2.ServletActionContext;
 import java.util.ArrayList;
 import java.util.List;
+import javax.imageio.ImageIO;
+import javax.servlet.ServletException;
+
+
+
+
 
 public class BooksAction extends ActionSupport {
+  private File fileUpload;
+  private String fileUploadContentType;
+  private String fileUploadFileName;
   private InputStream stream;
   private InputStream inOutBooks;
   private int bookId;
@@ -43,6 +53,7 @@ public class BooksAction extends ActionSupport {
     List<Book> bookList = new ArrayList<Book>();
     IBookService bookService = new BookServiceImpl();
     bookList = bookService.selectListBook();
+    
     
     ServletActionContext.getRequest().getSession().setAttribute("booksList", bookList);
     return "success";
@@ -131,7 +142,18 @@ public class BooksAction extends ActionSupport {
     inOutBooks = new ByteArrayInputStream(jsonResponse.getBytes());
     return SUCCESS;
   }
-  
+  public String saveimage() throws IOException, IllegalStateException, ServletException, ServletException, ServletException{
+ 
+      Image img = ImageIO.read(fileUpload);
+      BufferedImage bi = (BufferedImage)img;
+      File f = new File("C:\\Users\\YS\\Documents\\NetBeansProjects\\LibraryFinal\\web\\vues\\img\\bookCovers\\"+fileUploadFileName);
+      ImageIO.write(bi, "jpg", f);
+      return SUCCESS;
+   
+}
+// file name of the upload file is included in content-disposition header like this:
+//form-data; name="dataFile"; filename="PHOTO.JPG"
+
   public int getBookId() {
     return bookId;
   }
@@ -257,6 +279,31 @@ public class BooksAction extends ActionSupport {
   public void setInOutBooks(InputStream inOutBooks) {
     this.inOutBooks = inOutBooks;
   }
+  public String getFileUploadContentType() {
+		return fileUploadContentType;
+	}
+
+	public void setFileUploadContentType(String fileUploadContentType) {
+		this.fileUploadContentType = fileUploadContentType;
+	}
+
+	public String getFileUploadFileName() {
+		return fileUploadFileName;
+	}
+
+	public void setFileUploadFileName(String fileUploadFileName) {
+		this.fileUploadFileName = fileUploadFileName;
+	}
+
+	public File getFileUpload() {
+		return fileUpload;
+	}
+
+	public void setFileUpload(File fileUpload) {
+		this.fileUpload = fileUpload;
+	}
+
+	
 
   
 }
