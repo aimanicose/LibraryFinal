@@ -1,6 +1,9 @@
 package presentation;
 
+import Models.Author;
 import Models.Book;
+import Models.BookGenre;
+import Models.Editor;
 import Models.Preter;
 import Models.User;
 import Service.BookServiceImpl;
@@ -30,19 +33,23 @@ public class BooksAction extends ActionSupport {
   private InputStream stream;
   private InputStream inOutBooks;
   private int bookId;
-  private String firstName;
-  private String editor;
-  private String genre;
-  private String language;
+  private String bookAuthor;
+  private String bookEditor;
+  private String bookGenre;
+  private String bookLanguage;
   private String date;
-  private double price;
-  private String reference;
-  private String summary;
+  private double bookPrice;
+  private String booksreference;
+  private String bookSumary;
+  private int booksInStore;
   private List<Object> authorEditorInfo;
   private List<Book> borrowBookList;
   private User borrowUser;
   private String borrowDate;
   private String borrowSumary;
+  private String bookName;
+  private String bookPubliciation;
+  
   
   
   public String redirectBooks(){
@@ -84,6 +91,7 @@ public class BooksAction extends ActionSupport {
     
   }
   
+  
   public String updateBook(){
     /*
     Author author = new Author(firstName,firstName,1);
@@ -98,12 +106,47 @@ public class BooksAction extends ActionSupport {
     IBookService bookService = new BookServiceImpl();
     Book book = new Book();
     book.setBookID(bookId);
-    book.setBookPrice(price);
+    //book.setBookPrice(price);
     boolean updated = bookService.updateBook(book);
     ServletActionContext.getRequest().getSession().setAttribute("booksList", bookList);
     return "success";
   }
+
   
+  
+
+  
+  public String addBook() throws IOException
+  {
+    List<Book> bookList = new ArrayList<Book>();
+    IBookService bookService = new BookServiceImpl();
+    Book book = new Book();
+    Author a=new Author();
+    a.setAuthorLastName(getBookAuthor());
+    Editor e=new Editor();
+    e.setEditorName(bookEditor);
+    BookGenre bg=new BookGenre();
+    bg.setGenreName(bookGenre);
+    book.setBookPrice(bookPrice);
+    book.setBookAuthor(a);
+    book.setBookEditor(e);
+    book.setBookGenre(bg);
+    book.setBookImageId(fileUploadFileName);
+    book.setBookLanguage(bookLanguage);
+    book.setBookName(bookName);
+    book.setBookPublicationDate(bookPubliciation);
+    book.setBookReferance(booksreference);
+    book.setBookSummary(bookSumary);
+    book.setBooksInStore(booksInStore);
+    Image img = ImageIO.read(fileUpload);
+    BufferedImage bi = (BufferedImage)img;
+    File f = new File("C:\\Users\\YS\\Documents\\NetBeansProjects\\LibraryFinal\\web\\vues\\img\\bookCovers\\"+fileUploadFileName+".png");
+    ImageIO.write(bi, "png", f);
+    boolean add = bookService.addBook(book);
+    bookList=bookService.selectListBook();
+    ServletActionContext.getRequest().getSession().setAttribute("booksList", bookList);
+    return "success";
+  }
   public String authorEditorInfo(){
     authorEditorInfo = new ArrayList<Object>();
     //Author author = new Author("A","B",1);
@@ -138,15 +181,6 @@ public class BooksAction extends ActionSupport {
     inOutBooks = new ByteArrayInputStream(jsonResponse.getBytes());
     return SUCCESS;
   }
-  
-  public String saveimage() throws IOException, IllegalStateException, ServletException, ServletException, ServletException{
-    Image img = ImageIO.read(fileUpload);
-    BufferedImage bi = (BufferedImage)img;
-    File f = new File("C:\\Users\\YS\\Documents\\NetBeansProjects\\LibraryFinal\\web\\vues\\img\\bookCovers\\"+fileUploadFileName);
-    ImageIO.write(bi, "jpg", f);
-    return SUCCESS;
-    
-  }
 // file name of the upload file is included in content-disposition header like this:
 //form-data; name="dataFile"; filename="PHOTO.JPG"
   
@@ -162,68 +196,12 @@ public class BooksAction extends ActionSupport {
     return stream;
   }
   
-  public String getFirstName() {
-    return firstName;
-  }
-  
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
-  
-  public String getEditor() {
-    return editor;
-  }
-  
-  public void setEditor(String editor) {
-    this.editor = editor;
-  }
-  
-  public String getGenre() {
-    return genre;
-  }
-  
-  public void setGenre(String genre) {
-    this.genre = genre;
-  }
-  
-  public String getLanguage() {
-    return language;
-  }
-  
-  public void setLanguage(String language) {
-    this.language = language;
-  }
-  
   public String getDate() {
     return date;
   }
   
   public void setDate(String date) {
     this.date = date;
-  }
-  
-  public double getPrice() {
-    return price;
-  }
-  
-  public void setPrice(double price) {
-    this.price = price;
-  }
-  
-  public String getReference() {
-    return reference;
-  }
-  
-  public void setReference(String reference) {
-    this.reference = reference;
-  }
-  
-  public String getSummary() {
-    return summary;
-  }
-  
-  public void setSummary(String summary) {
-    this.summary = summary;
   }
   
   public List<Object> getAuthorEditorInfo() {
@@ -298,6 +276,146 @@ public class BooksAction extends ActionSupport {
   public void setFileUpload(File fileUpload) {
     this.fileUpload = fileUpload;
   }
+
+    /**
+     * @return the bookName
+     */
+    public String getBookName() {
+        return bookName;
+    }
+
+    /**
+     * @param bookName the bookName to set
+     */
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
+    }
+
+    /**
+     * @return the bookPubliciation
+     */
+    public String getBookPubliciation() {
+        return bookPubliciation;
+    }
+
+    /**
+     * @param bookPubliciation the bookPubliciation to set
+     */
+    public void setBookPubliciation(String bookPubliciation) {
+        this.bookPubliciation = bookPubliciation;
+    }
+
+    /**
+     * @return the booksInStore
+     */
+    public int getBooksInStore() {
+        return booksInStore;
+    }
+
+    /**
+     * @param booksInStore the booksInStore to set
+     */
+    public void setBooksInStore(int booksInStore) {
+        this.booksInStore = booksInStore;
+    }
+
+    /**
+     * @return the bookAuthor
+     */
+    public String getBookAuthor() {
+        return bookAuthor;
+    }
+
+    /**
+     * @param bookAuthor the bookAuthor to set
+     */
+    public void setBookAuthor(String bookAuthor) {
+        this.bookAuthor = bookAuthor;
+    }
+
+    /**
+     * @return the bookLanguage
+     */
+    public String getBookLanguage() {
+        return bookLanguage;
+    }
+
+    /**
+     * @param bookLanguage the bookLanguage to set
+     */
+    public void setBookLanguage(String bookLanguage) {
+        this.bookLanguage = bookLanguage;
+    }
+
+    /**
+     * @return the bookEditor
+     */
+    public String getBookEditor() {
+        return bookEditor;
+    }
+
+    /**
+     * @param bookEditor the bookEditor to set
+     */
+    public void setBookEditor(String bookEditor) {
+        this.bookEditor = bookEditor;
+    }
+
+    /**
+     * @return the bookGenre
+     */
+    public String getBookGenre() {
+        return bookGenre;
+    }
+
+    /**
+     * @param bookGenre the bookGenre to set
+     */
+    public void setBookGenre(String bookGenre) {
+        this.bookGenre = bookGenre;
+    }
+
+    /**
+     * @return the bookPrice
+     */
+    public double getBookPrice() {
+        return bookPrice;
+    }
+
+    /**
+     * @param bookPrice the bookPrice to set
+     */
+    public void setBookPrice(double bookPrice) {
+        this.bookPrice = bookPrice;
+    }
+
+    /**
+     * @return the booksreference
+     */
+    public String getBooksreference() {
+        return booksreference;
+    }
+
+    /**
+     * @param booksreference the booksreference to set
+     */
+    public void setBooksreference(String booksreference) {
+        this.booksreference = booksreference;
+    }
+
+    /**
+     * @return the bookSumary
+     */
+    public String getBookSumary() {
+        return bookSumary;
+    }
+
+    /**
+     * @param bookSumary the bookSumary to set
+     */
+    public void setBookSumary(String bookSumary) {
+        this.bookSumary = bookSumary;
+    }
   
   
   

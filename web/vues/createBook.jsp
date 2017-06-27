@@ -94,7 +94,7 @@
                             Book Form
                         </div>
                         <div class="panel-body">
-                            <form name="form-create" action="saveimage.action" method="POST" enctype="multipart/form-data" >
+                            <form name="form-create" action="addBook.action" method="POST" enctype="multipart/form-data" >
                                 <div class="form-group">
                                     <label for="bookName">Book's Name</label>
                                     <input type="input" class="form-control" id="bookName" name="bookName" placeholder="Enter book name" />
@@ -126,6 +126,10 @@
                                 <div class="form-group">
                                     <label for="booksInStore">Books In Store</label>
                                     <input type="text" class="form-control" id="booksInStore" name="booksInStore" placeholder="Enter the number of books in store" />
+                                </div>
+                                 <div class="form-group">
+                                    <label for="booksreference">Books Reference</label>
+                                    <input type="text" class="form-control" id="booksreference" name="booksreference" placeholder="Enter book Reference" />
                                 </div>
                                 <div class="form-group">
                                     <label for="bookSumary">Book's Sumary</label>

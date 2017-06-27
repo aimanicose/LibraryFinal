@@ -20,16 +20,15 @@
                 <result name="input">/vues/login/index.jsp</result>
         </action>
         
-        <action name="saveimage" 
-                class="presentation.BooksAction" method="saveimage">
-                <result name="success" type="redirect">/vues/index.jsp</result>
+        <action name="addBook" 
+                class="presentation.BooksAction" method="addBook">
+                <result name="success">/vues/booksList.jsp</result>
                 
         </action>
 
 
         <action name="logout" 
                 class="presentation.AuthAction" method="logout">
-            
                 <result name="success" type="redirect">/vues/login.jsp</result>
         </action>
         
