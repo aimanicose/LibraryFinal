@@ -21,4 +21,5 @@ public interface IBook {
     List<Book> selectBookIdName();
     int bookinstore();
     int bookoutstore();
+    Book getBookID(Book b);
 }
