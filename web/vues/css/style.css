@@ -388,3 +388,22 @@ margin-right:5px;
     height:10px;
 font-size:8px;
 }
+
+.formattedList li{
+    list-style-type: none;
+    height:50px;
+    line-height: 50px;
+}
+
+.formattedList li:hover{
+    background-color: #f9f9f9;
+}
+
+.formattedList .oddItem {
+    background-color: #f9f9f9;
+}
+
+.formattedList .evenItem {
+    background-color: White;
+}
+

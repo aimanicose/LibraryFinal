@@ -19,6 +19,7 @@
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/font-awesome.css" >
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/style.css" >
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/listnav.css" >
+        <link href="<%=application.getContextPath() %>/vues/css/bootstrap-directional-buttons.min.css" rel="stylesheet">
         <script src="<%=application.getContextPath() %>/vues/js/jquery-3.2.1.min.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/dataTable/jquery-listnav.min.js"></script>
         
@@ -82,31 +83,14 @@
         <div id="container" class="content-wrapper">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <h4 class="page-head-line">Authors List</h4>
-                    </div>
+                    <a type="button" class="btn btn-danger btn-arrow-left" style="margin-left: 30px" href="authorsList.jsp">Authors List</a>
                 </div>
                 <div class="row">
-                      
-                    <ul id="myUL" class="uk-list formattedList">  
-                    <% 
-                        List<Author> authorsList = (List<Author>)session.getAttribute("auhtorsList");
-                        for(int i=0;i<authorsList.size();i++){
-                        Author author = (Author)authorsList.get(i);
-                        
-                    %>
-                  
-                        <div class="col-md-4">
-                            <li>
-                                <a href="<s:url action="authorDetails" namespace="/vues" />?authorId=<%=author.getAuthorID()%>"><%=author.getAuthorFirstName() +" "+author.getAuthorLastName()%></a> 
-                            </li>
-                        </div>
-                
-                    <%}
-                    %>
-                    </ul>
-                    
+                    <div class="col-md-12">
+                        <h4 class="page-head-line">Author's Details</h4>
+                    </div>
                 </div>
+               
             </div>
         </div>
         <!-- CONTENT-WRAPPER SECTION END-->
