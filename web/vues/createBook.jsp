@@ -94,7 +94,7 @@
                             Book Form
                         </div>
                         <div class="panel-body">
-                            <form>
+                            <form name="form-create" action="saveimage.action" method="POST" enctype="multipart/form-data" >
                                 <div class="form-group">
                                     <label for="bookName">Book's Name</label>
                                     <input type="input" class="form-control" id="bookName" name="bookName" placeholder="Enter book name" />
@@ -133,7 +133,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="bookImage">Book's Cover Image</label>
-                                    <input type="file" id="bookImage" name="bookImage" />
+                                    <input type="file" id="bookImage" name="fileUpload" />
                                     <p class="help-block">Please make sure the cover is a 678*1083 png picture.</p>
                                 </div>
                                 <hr />

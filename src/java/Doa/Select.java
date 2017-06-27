@@ -51,6 +51,8 @@ public class Select {
                              a1.setAuthorLastName(s.getString("AuthorLastname"));
                              a1.setAuthorNationality(s.getString("AuthorNationality"));
                              a1.setAuthorSexe(s.getString("AuthorSexe"));
+                             a1.setAuthorBiography(s.getString("AuthorBiography"));
+                             a1.setAuthorImageID(s.getString("AuthorImageID"));
                              
 
 			}

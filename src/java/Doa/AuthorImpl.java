@@ -27,7 +27,7 @@ Select sb=new Select();
 		try
 		{
 			c=ConnectionManager.getInstance().etablirconnection();
-			String req="insert into author (AuthorID,AuthorBirthDate,AuthorFirstname,AuthorLastname,AuthorNationality ,AuthorSexe) values("+a.getAuthorID()+",'"+a.getAuthorBirthDate()+"','"+a.getAuthorFirstName()+"','"+a.getAuthorLastName()+"','"+a.getAuthorNationality()+"','"+a.getAuthorSexe()+"')";
+			String req="insert into author (AuthorID,AuthorBirthDate,AuthorFirstname,AuthorLastname,AuthorNationality ,AuthorSexe,AuthorBiography,AuthorImageID) values("+a.getAuthorID()+",'"+a.getAuthorBirthDate()+"','"+a.getAuthorFirstName()+"','"+a.getAuthorLastName()+"','"+a.getAuthorNationality()+"','"+a.getAuthorSexe()+"','"+a.getAuthorBiography()+"','"+a.getAuthorImageID()+"')";
 			Statement st=c.createStatement();
 			st.execute(req);
 			bool=true;
@@ -73,7 +73,7 @@ Select sb=new Select();
 		try
 		{
 			c=ConnectionManager.getInstance().etablirconnection();
-			String req="UPDATE author SET AuthorBirthDate = '"+a.getAuthorBirthDate()+"',AuthorFirstname  = '"+a.getAuthorFirstName()+"',AuthorLastname = '"+a.getAuthorLastName()+"',AuthorNationality = '"+a.getAuthorNationality()+"',AuthorSexe = '"+a.getAuthorSexe()+"' WHERE AuthorID = "+a.getAuthorID()+"";
+			String req="UPDATE author SET AuthorBirthDate = '"+a.getAuthorBirthDate()+"',AuthorFirstname  = '"+a.getAuthorFirstName()+"',AuthorLastname = '"+a.getAuthorLastName()+"',AuthorNationality = '"+a.getAuthorNationality()+"',AuthorSexe = '"+a.getAuthorSexe()+"',AuthorBiography = '"+a.getAuthorBiography()+"',AuthorImageID = '"+a.getAuthorImageID()+"' WHERE AuthorID = "+a.getAuthorID()+"";
 			Statement st=c.createStatement();
 			st.execute(req);
 			bool=true;
@@ -117,6 +117,8 @@ Select sb=new Select();
                              a1.setAuthorLastName(s.getString("AuthorLastname"));
                              a1.setAuthorNationality(s.getString("AuthorNationality"));
                              a1.setAuthorSexe(s.getString("AuthorSexe"));
+                             a1.setAuthorBiography(s.getString("AuthorBiography"));
+                             a1.setAuthorImageID(s.getString("AuthorImageID"));
                              a1.setBookList(listbook);
 
 			}
@@ -160,6 +162,8 @@ Select sb=new Select();
                              a1.setAuthorLastName(s.getString("AuthorLastname"));
                              a1.setAuthorNationality(s.getString("AuthorNationality"));
                              a1.setAuthorSexe(s.getString("AuthorSexe"));
+                             a1.setAuthorBiography(s.getString("AuthorBiography"));
+                             a1.setAuthorImageID(s.getString("AuthorImageID"));
                              listbook=sb.selectBooks(a1);
                              a1.setBookList(listbook);
                              listauthor.add(a1);
