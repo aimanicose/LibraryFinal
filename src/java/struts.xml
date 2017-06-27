@@ -70,5 +70,9 @@
                 </result>
         </action>
         
+         <action name="authorsList" 
+                class="presentation.AuthorsAction" method="authorsList">
+                <result name="success" type="redirect">/vues/authorsList.jsp</result>
+        </action>
     </package>
 </struts>

@@ -73,6 +73,7 @@
                                 <li><a class="menu-top-active" href="index.jsp">Dashboard</a></li>
                                 <li><a href="<s:url action="redirectBooks" namespace="/vues" />">Books</a></li>
                                 <li><a href="borrowsList.jsp">Borrows</a></li>
+                                <li><a href="<s:url action="authorsList" namespace="/vues" />">Authors</a></li>
                                 <li><a href="usersList.jsp">Users</a></li>
                                 <li><a href="forms.html">Shelfs</a></li>
                                 <li><a href="<s:url action="logout" namespace="/vues" />">Log Out</a></li>
