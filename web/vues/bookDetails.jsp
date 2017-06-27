@@ -24,7 +24,7 @@
 <form name="form-update" action="updateBook.action">
     <div class="modal-header defaultColor">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><strong><%=detailedBook.getBookName()%></strong></h4>
+        <h4 class="modal-title"><strong id="bookName"><%=detailedBook.getBookName()%></strong></h4>
     </div>
 
     <div class="modal-body">

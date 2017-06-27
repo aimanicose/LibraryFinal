@@ -26,7 +26,7 @@ public class BookImpl implements IBook {
     boolean bool=false;
     try
     {
-        
+      
       c=ConnectionManager.getInstance().etablirconnection();
       String req="insert into book (BookID,BookLanguage,BookName,BookPrice,PublicationDate,bookSummary,bookReferance,bookImageId,booksInStore,AuthorID,EditorID,GenreID) values("+b.getBookID()+",'"+b.getBookLanguage()+"','"+b.getBookName()+"',"+b.getBookPrice()+",'"+b.getBookPublicationDate()+"','"+b.getBookSummary()+"','"+b.getBookReferance()+"','"+b.getBookImageId()+"',"+b.getBooksInStore()+","+b.getBookAuthor().getAuthorID()+","+b.getBookEditor().getEditorID()+","+b.getBookGenre().getGenreID()+")";
       Statement st=c.createStatement();
@@ -195,7 +195,7 @@ public class BookImpl implements IBook {
     }
     return listbook;
   }
-
+  
   @Override
   public List<Book> selectBookIdName() {
     List<Book> listbook=new ArrayList<Book>();
@@ -232,9 +232,9 @@ public class BookImpl implements IBook {
     }
     return listbook;
   }
-
-    @Override
-    public int bookinstore() {
+  
+  @Override
+  public int bookinstore() {
     int bookinstore=0;
     Connection c=null;
     ResultSet s;
@@ -253,7 +253,7 @@ public class BookImpl implements IBook {
       
       while(s.next())
       {
-          bookinstore=Integer.parseInt(s.getString("sumbookinstore"));
+        bookinstore=Integer.parseInt(s.getString("sumbookinstore"));
       }
     }
     catch(Exception e)
@@ -264,11 +264,11 @@ public class BookImpl implements IBook {
       ConnectionManager.getInstance().fermerConnection(c);
     }
     return bookinstore;
-    }
-
-    @Override
-    public int bookoutstore() {
-         int bookoutstore=0;
+  }
+  
+  @Override
+  public int bookoutstore() {
+    int bookoutstore=0;
     Connection c=null;
     ResultSet s;
     try
@@ -286,7 +286,7 @@ public class BookImpl implements IBook {
       
       while(s.next())
       {
-          bookoutstore=Integer.parseInt(s.getString("bookoutstore"));
+        bookoutstore=Integer.parseInt(s.getString("bookoutstore"));
       }
     }
     catch(Exception e)
@@ -297,7 +297,34 @@ public class BookImpl implements IBook {
       ConnectionManager.getInstance().fermerConnection(c);
     }
     return bookoutstore;
+  }
+  
+  public Book getBookID(Book book){
+    Connection c=null;
+    Book b1=null;
+    ResultSet s;
+    try
+    {
+      c=ConnectionManager.getInstance().etablirconnection();
+      
+      String req="select BookID from book where BookName="+book.getBookName()+"";
+      Statement st=c.createStatement();
+      s=st.executeQuery(req);
+      
+      while(s.next())
+      {
+        b1.setBookID(Integer.parseInt(s.getString("BookID")));
+      }
     }
+    catch(Exception e)
+    {
+      e.printStackTrace();
+    }
+    finally{
+      ConnectionManager.getInstance().fermerConnection(c);
+    }
+    return b1;
+  }
   
 }
 

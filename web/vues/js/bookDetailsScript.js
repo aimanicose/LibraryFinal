@@ -22,6 +22,11 @@ function deleteBook(bookId){
 }
 
 function updateBook(){
+    var bookNameV = $("#bookName").html();
+    var bookNameI = $("<input>", { val: bookNameV,type: "text",size:"30",name:"bookName", id:"bean_bookName" });
+    $("#bookName").html(bookNameI);
+    inputs.push(bookNameV);
+    
     var firstNameV = $("#firstName").html();
     var firstNameI = $("<input>", { val: firstNameV,type: "text",size:"30",name:"firstName", id:"bean_firstName" });
     $("#firstName").html(firstNameI);
