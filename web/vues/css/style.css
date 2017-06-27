@@ -407,3 +407,11 @@ font-size:8px;
     background-color: White;
 }
 
+
+
+/*-------------------------*/
+
+.carousel-control {
+  padding-top:20%;
+  width:3%;
+}

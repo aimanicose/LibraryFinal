@@ -15,6 +15,7 @@ public class Author implements Serializable {
 	private String authorFirstName;
 	private int authorID;
 	private String authorLastName;
+        private String authorPenName;
 	private String authorNationality;
 	private String authorSexe;
 	private List<Book> bookList;
@@ -134,8 +135,14 @@ public class Author implements Serializable {
   public void setAuthorImageID(String authorImageID) {
     this.authorImageID = authorImageID;
   }
-    
 
+  public String getAuthorPenName() {
+    return authorPenName;
+  }
+
+  public void setAuthorPenName(String authorPenName) {
+    this.authorPenName = authorPenName;
+  }
 }
 
 	

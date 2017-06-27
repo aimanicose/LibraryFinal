@@ -98,7 +98,7 @@
                   
                         <div class="col-md-4">
                             <li>
-                                <a href="<s:url action="authorDetails" namespace="/vues" />?authorId=<%=author.getAuthorID()%>"><%=author.getAuthorFirstName() +" "+author.getAuthorLastName()%></a> 
+                                <a href="<s:url action="authorDetails" namespace="/vues" />?authorId=<%=author.getAuthorID()%>"><%=author.getAuthorFirstName() +" "+author.getAuthorLastName() +" ("+author.getAuthorPenName()+")" %></a> 
                             </li>
                         </div>
                 

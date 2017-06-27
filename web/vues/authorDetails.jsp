@@ -18,6 +18,7 @@
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/bootstrap.min.css" >
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/font-awesome.css" >
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/style.css" >
+        <link rel="stylesheet" href="<%=application.getContextPath() %>/vues/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style">
         <link href="<%=application.getContextPath() %>/vues/css/bootstrap-directional-buttons.min.css" rel="stylesheet">
         <script src="<%=application.getContextPath() %>/vues/js/jquery-3.2.1.min.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/bootstrap.min.js"></script>
@@ -94,24 +95,69 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                         <img src="<%=application.getContextPath() %>/vues/img/bookCovers/<%=detailedAuthor.getAuthorImageID()%>.png" alt="/vues/img/authorsPictures/placeholder.png" class="img-thumbnail">
+                         <img src="<%=application.getContextPath() %>/vues/img/authorsPictures/<%=detailedAuthor.getAuthorImageID()%>.jpg" alt="Author Image" class="img-thumbnail" style="max-width: 80%;">
                     </div>
                     <div class="col-md-9">
-                        
+                        <div class="profile-user-info profile-user-info-striped">
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">First Name :</div>
+                                <div class="profile-info-value">
+                                    <span class="editable" id="firstName"><%=detailedAuthor.getAuthorFirstName()%></span>
+                                </div>
+                            </div>
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Last Name :</div>
+                                <div class="profile-info-value">
+                                     <span class="editable" id="firstName"><%=detailedAuthor.getAuthorLastName()%></span>
+                                 </div>
+                            </div>
+
+                           <div class="profile-info-row">
+                                <div class="profile-info-name">Pen Name :</div>
+                                <div class="profile-info-value">
+                                     <span class="editable" id="penName"><%=detailedAuthor.getAuthorPenName()%></span>
+                                 </div>
+                            </div>
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Birth Date :</div>
+                                <div class="profile-info-value">
+                                    <span class="editable" id="birthDate"><%=detailedAuthor.getAuthorBirthDate()%></span>
+                                </div>
+                            </div>
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Nationality :</div>
+                                <div class="profile-info-value">
+                                    <span class="editable" id="nationality"><%=detailedAuthor.getAuthorNationality()%></span>
+                                </div>
+                            </div>
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Sexe :</div>
+                                <div class="profile-info-value">
+                                    <span class="editable" id="sexe"><%=detailedAuthor.getAuthorSexe()%></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                    
+                <br/>
+                
                 <div class="row">
                     <div class="tabbable">
                         <ul class="nav nav-tabs" id="myTab">
                             <li class="active">
-                                <a data-toggle="tab" href="#home">
+                                <a data-toggle="tab" href="#biography">
                                     <i class="green ace-icon fa  fa-book bigger-120"></i>
                                     Bio
                                 </a>
                             </li>
 
                             <li>
-                                <a data-toggle="tab" href="#messages">
+                                <a data-toggle="tab" href="#books">
                                     <i class="green ace-icon fa  fa-comment bigger-120"></i>
                                     Books
                                 </a>
@@ -119,19 +165,84 @@
                         </ul>
 
                         <div class="tab-content">
-                            <div id="home" class="tab-pane fade in active">
-                                    <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+                            <div id="biography" class="tab-pane fade in active">
+                                <br/>
+                                <p><%=detailedAuthor.getAuthorBiography()%></p>
                             </div>
 
-                            <div id="messages" class="tab-pane fade">
-                                    <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
+                            <div id="books" class="tab-pane fade">
+                                <br/>
+                                <div class="container">
+                                    <div class="col-md-12">
+                                        <div class="well">
+                                            <div id="myCarousel" class="carousel slide">
+                                                <div class="carousel-inner">
+                                                        <% 
+                                                            List<Book> authorBooks = detailedAuthor.getBookList();
+                                                            long rows = (authorBooks.size() + 4 - 1) / 4;
+                                                            int booksCounter = 0;
+                                                            int rowsCounter = 0;
+                                                            int index = 4;
+
+                                                            for(int i=0;i<2;i++){
+                                                                if(i>0){
+                                                        %>
+                                                        <div class="item">
+                                                        <%      }else{ %>  
+                                                            <div class="item active">
+                                                        <%      }%>
+                                                                <div class="row">
+                                                        <%
+                                                                if(authorBooks.size()>index){
+                                                                    rowsCounter = rowsCounter+4;
+                                                                }else{
+                                                                    rowsCounter = authorBooks.size();
+                                                                }
+                                                                  
+                                                                for(int j=booksCounter;j<rowsCounter;j++){
+                                                        %>
+                                                                <div class="col-sm-3">
+                                                                    <a href="<s:url action="bookDetails" namespace="/vues" />&bookId=<%=authorBooks.get(j).getBookID()%>" data-toggle="modal" data-target="#bookDetailsModal"  class="thumbnail">
+                                                                        <img src="<%=application.getContextPath() %>/vues/img/bookCovers/<%=authorBooks.get(j).getBookImageId()%>.png" alt="Image" class="img-responsive">
+                                                                    </a>
+                                                                </div>
+                                                        <% 
+                                                                    booksCounter++;
+                                                                }
+                                                                index=index+4;
+                                                        %>
+                                                                </div>
+                                                            </div>
+                                                        <%  }
+                                                        %>
+                                                        </div>
+                                                </div>
+                                                <!--/carousel-inner--> 
+                                                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                                    <i class="glyphicon glyphicon-chevron-left"></i>
+                                                </a>
+
+                                                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                                    <i class="glyphicon glyphicon-chevron-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="container">
+                <div id="bookDetailsModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- CONTENT-WRAPPER SECTION END-->
         <footer>
             <div class="container">
                 <div class="row">
@@ -141,6 +252,18 @@
                 </div>
             </div>
         </footer>
-        <script src="<%=application.getContextPath() %>/vues/js/authorsScript.js"></script>
+        <script>
+     $(document).ready(function() {
+    $('#myCarousel').carousel({
+	interval: 10000
+	});
+    
+    $('#myCarousel').on('slid.bs.carousel', function() {
+    	//alert("slid");
+	});
+    
+    
+});
+        </script>
     </body>
 </html>

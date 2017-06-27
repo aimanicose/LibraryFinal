@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/style.css" >
 <script src="<%=application.getContextPath() %>/vues/js/jquery-3.2.1.min.js"></script>
 <script src="<%=application.getContextPath() %>/vues/js/bootstrap.min.js"></script>
-<script src="<%=application.getContextPath() %>/vues/js/booksScript.js"></script>
+<script src="<%=application.getContextPath() %>/vues/js/bookDetailsScript.js"></script>
 <%
  response.setHeader("Cache-Control","no-cache");
  response.setHeader("Cache-Control","no-store");
@@ -30,7 +30,7 @@
     <div class="modal-body">
 
         <div class="col-md-4"> 
-            <img src="<%=application.getContextPath() %>/vues/img/bookCovers/<%=detailedBook.getBookImageId()%>.png" alt="<%=application.getContextPath() %>/vues/img/bookCovers/placeholder.png" class="img-thumbnail">
+            <img src="<%=application.getContextPath() %>/vues/img/bookCovers/<%=detailedBook.getBookImageId()%>.png" alt="Book Cover" class="img-thumbnail">
             <div id="editBookButtons" class="">
                 <a id="updateBook" onclick="updateBook()" class="btn btn-block btn-success"><span class="glyphicon glyphicon-edit"></span> Edit Book</a>
                 <a id="deleteBook" onclick="deleteBook(<%=detailedBook.getBookID()%>)" class="btn btn-block btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete Book</a>

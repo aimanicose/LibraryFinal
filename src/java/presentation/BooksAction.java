@@ -23,10 +23,6 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 
-
-
-
-
 public class BooksAction extends ActionSupport {
   private File fileUpload;
   private String fileUploadContentType;
@@ -142,18 +138,18 @@ public class BooksAction extends ActionSupport {
     inOutBooks = new ByteArrayInputStream(jsonResponse.getBytes());
     return SUCCESS;
   }
+  
   public String saveimage() throws IOException, IllegalStateException, ServletException, ServletException, ServletException{
- 
-      Image img = ImageIO.read(fileUpload);
-      BufferedImage bi = (BufferedImage)img;
-      File f = new File("C:\\Users\\YS\\Documents\\NetBeansProjects\\LibraryFinal\\web\\vues\\img\\bookCovers\\"+fileUploadFileName);
-      ImageIO.write(bi, "jpg", f);
-      return SUCCESS;
-   
-}
+    Image img = ImageIO.read(fileUpload);
+    BufferedImage bi = (BufferedImage)img;
+    File f = new File("C:\\Users\\YS\\Documents\\NetBeansProjects\\LibraryFinal\\web\\vues\\img\\bookCovers\\"+fileUploadFileName);
+    ImageIO.write(bi, "jpg", f);
+    return SUCCESS;
+    
+  }
 // file name of the upload file is included in content-disposition header like this:
 //form-data; name="dataFile"; filename="PHOTO.JPG"
-
+  
   public int getBookId() {
     return bookId;
   }
@@ -237,16 +233,16 @@ public class BooksAction extends ActionSupport {
   public void setAuthorEditorInfo(List<Object> authorEditorInfo) {
     this.authorEditorInfo = authorEditorInfo;
   }
-
+  
   public List<Book> getBorrowBookList() {
     return borrowBookList;
   }
-
+  
   public void setBorrowBookList(List<Book> borrowBookList) {
     this.borrowBookList = borrowBookList;
   }
   
-
+  
   
   public User getBorrowUser() {
     return borrowUser;
@@ -271,39 +267,39 @@ public class BooksAction extends ActionSupport {
   public void setBorrowSumary(String borrowSumary) {
     this.borrowSumary = borrowSumary;
   }
-
+  
   public InputStream getInOutBooks() {
     return inOutBooks;
   }
-
+  
   public void setInOutBooks(InputStream inOutBooks) {
     this.inOutBooks = inOutBooks;
   }
   public String getFileUploadContentType() {
-		return fileUploadContentType;
-	}
-
-	public void setFileUploadContentType(String fileUploadContentType) {
-		this.fileUploadContentType = fileUploadContentType;
-	}
-
-	public String getFileUploadFileName() {
-		return fileUploadFileName;
-	}
-
-	public void setFileUploadFileName(String fileUploadFileName) {
-		this.fileUploadFileName = fileUploadFileName;
-	}
-
-	public File getFileUpload() {
-		return fileUpload;
-	}
-
-	public void setFileUpload(File fileUpload) {
-		this.fileUpload = fileUpload;
-	}
-
-	
-
+    return fileUploadContentType;
+  }
+  
+  public void setFileUploadContentType(String fileUploadContentType) {
+    this.fileUploadContentType = fileUploadContentType;
+  }
+  
+  public String getFileUploadFileName() {
+    return fileUploadFileName;
+  }
+  
+  public void setFileUploadFileName(String fileUploadFileName) {
+    this.fileUploadFileName = fileUploadFileName;
+  }
+  
+  public File getFileUpload() {
+    return fileUpload;
+  }
+  
+  public void setFileUpload(File fileUpload) {
+    this.fileUpload = fileUpload;
+  }
+  
+  
+  
   
 }

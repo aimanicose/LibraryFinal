@@ -130,19 +130,20 @@
                                                 <td><%=book.getBookLanguage()%></td>
                                                 <td><%=book.getBookPublicationDate()%></td>
                                                 <td><%=book.getBooksInStore()%></td>
-                                                <td class="text-center"><a href="<s:url action="bookDetails" namespace="/vues" />?bookId=<%=book.getBookID()%>" data-toggle="modal" data-target="#bookDetailsModal<%=book.getBookID()%>"><img src="/Library_Final/vues/img/bookDetail.png" width="25" height="25"></img></a></td>
+                                                <td class="text-center"><a href="<s:url action="bookDetails" namespace="/vues" />?bookId=<%=book.getBookID()%>" data-toggle="modal" data-target="#bookDetailsModal"><img src="/Library_Final/vues/img/bookDetail.png" width="25" height="25"></img></a></td>
                                             </tr>
                                             
+                                           
+                                            <%}
+                                            %>
                                             <div class="container">
-                                                <div id="bookDetailsModal<%=book.getBookID()%>" class="modal fade" role="dialog">
+                                                <div id="bookDetailsModal" class="modal fade" role="dialog">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <%}
-                                            %>
                                         </tbody>
                                     </table>
                                 </div>
