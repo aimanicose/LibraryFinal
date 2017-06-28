@@ -37,10 +37,11 @@ public class BooksAction extends ActionSupport {
   private User borrowUser;
   private String borrowDate;
   private String borrowSumary;
-  private Book beanBook;
   private String bookAuthor;
   private String bookEditor;
   private String bookGenre;
+  private Book beanBook;
+  
   
   
   public String redirectBooks(){
@@ -111,12 +112,15 @@ public class BooksAction extends ActionSupport {
     IBookService bookService = new BookServiceImpl();
     Book book = new Book();
     Author a=new Author();
-    a.setAuthorLastName(getBookAuthor());
+    a.setAuthorLastName(bookAuthor);
     Editor e=new Editor();
     e.setEditorName(getBookEditor());
     BookGenre bg=new BookGenre();
     bg.setGenreName(getBookGenre());
     book.setBookPrice(beanBook.getBookPrice());
+
+    bg.setGenreName(bookGenre);
+
     book.setBookAuthor(a);
     book.setBookEditor(e);
     book.setBookGenre(bg);

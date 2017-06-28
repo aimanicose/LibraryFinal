@@ -122,6 +122,7 @@
                                 <div class="form-group">
                                     <label for="bookPubliciation">Book's Publication Date</label>
                                     <input type="text" class="form-control" id="bookPubliciation" name="beanBook.bookPublicationDate" placeholder="Enter book publication date" />
+
                                 </div>
                                 <div class="form-group">
                                     <label for="booksInStore">Books In Store</label>
@@ -134,6 +135,9 @@
                                 <div class="form-group">
                                     <label for="bookSumary">Book's Sumary</label>
                                     <textarea class="form-control" id="bookSumary" name="beanBook.bookSummary" rows="5" placeholder="Enter the book's sumary"></textarea>
+
+                                  
+
                                 </div>
                                 <div class="form-group">
                                     <label for="bookImage">Book's Cover Image</label>
