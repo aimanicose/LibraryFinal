@@ -78,6 +78,7 @@ public class BooksAction extends ActionSupport {
     
   }
   
+  
   public String updateBook(){
     List<Book> bookList = new ArrayList<Book>();
     IBookService bookService = new BookServiceImpl();
@@ -102,6 +103,37 @@ public class BooksAction extends ActionSupport {
     }
   }
   
+  public String addBook() throws IOException
+  {
+    List<Book> bookList = new ArrayList<Book>();
+    IBookService bookService = new BookServiceImpl();
+    Book book = new Book();
+    Author a=new Author();
+    a.setAuthorLastName(getBookAuthor());
+    Editor e=new Editor();
+    e.setEditorName(bookEditor);
+    BookGenre bg=new BookGenre();
+    bg.setGenreName(bookGenre);
+    book.setBookPrice(bookPrice);
+    book.setBookAuthor(a);
+    book.setBookEditor(e);
+    book.setBookGenre(bg);
+    book.setBookImageId(fileUploadFileName);
+    book.setBookLanguage(bookLanguage);
+    book.setBookName(bookName);
+    book.setBookPublicationDate(bookPubliciation);
+    book.setBookReferance(booksreference);
+    book.setBookSummary(bookSumary);
+    book.setBooksInStore(booksInStore);
+    Image img = ImageIO.read(fileUpload);
+    BufferedImage bi = (BufferedImage)img;
+    File f = new File("C:\\Users\\YS\\Documents\\NetBeansProjects\\LibraryFinal\\web\\vues\\img\\bookCovers\\"+fileUploadFileName+".png");
+    ImageIO.write(bi, "png", f);
+    boolean add = bookService.addBook(book);
+    bookList=bookService.selectListBook();
+    ServletActionContext.getRequest().getSession().setAttribute("booksList", bookList);
+    return "success";
+  }
   public String authorEditorInfo(){
     authorEditorInfo = new ArrayList<Object>();
     return "json";
@@ -133,15 +165,6 @@ public class BooksAction extends ActionSupport {
     String jsonResponse = s.toJson(booksNumber);
     inOutBooks = new ByteArrayInputStream(jsonResponse.getBytes());
     return SUCCESS;
-  }
-  
-  public String saveimage() throws IOException, IllegalStateException, ServletException, ServletException, ServletException{
-    Image img = ImageIO.read(fileUpload);
-    BufferedImage bi = (BufferedImage)img;
-    File f = new File("C:\\Users\\YS\\Documents\\NetBeansProjects\\LibraryFinal\\web\\vues\\img\\bookCovers\\"+fileUploadFileName);
-    ImageIO.write(bi, "jpg", f);
-    return SUCCESS;
-    
   }
 // file name of the upload file is included in content-disposition header like this:
 //form-data; name="dataFile"; filename="PHOTO.JPG"

@@ -28,7 +28,7 @@ public class BookImpl implements IBook {
     {
       
       c=ConnectionManager.getInstance().etablirconnection();
-      String req="insert into book (BookID,BookLanguage,BookName,BookPrice,PublicationDate,bookSummary,bookReferance,bookImageId,booksInStore,AuthorID,EditorID,GenreID) values("+b.getBookID()+",'"+b.getBookLanguage()+"','"+b.getBookName()+"',"+b.getBookPrice()+",'"+b.getBookPublicationDate()+"','"+b.getBookSummary()+"','"+b.getBookReferance()+"','"+b.getBookImageId()+"',"+b.getBooksInStore()+","+b.getBookAuthor().getAuthorID()+","+b.getBookEditor().getEditorID()+","+b.getBookGenre().getGenreID()+")";
+      String req="insert into book (BookLanguage,BookName,BookPrice,PublicationDate,bookSummary,bookReferance,bookImageId,booksInStore,AuthorID,EditorID,GenreID) values('"+b.getBookLanguage()+"','"+b.getBookName()+"',"+b.getBookPrice()+",'"+b.getBookPublicationDate()+"','"+b.getBookSummary()+"','"+b.getBookReferance()+"','"+b.getBookImageId()+"',"+b.getBooksInStore()+",(select AuthorID from author where AuthorLastname='"+b.getBookAuthor().getAuthorLastName()+"'),(select EditorID from editor where EditorName= '"+b.getBookEditor().getEditorName()+"'),(select GenreID from bookgenre where GenreName='"+b.getBookGenre().getGenreName()+"'))";
       Statement st=c.createStatement();
       st.execute(req);
       bool=true;

@@ -66,7 +66,8 @@ public class NewMain {
        
     // System.out.println(IB.bookoutstore());
        
-  
+  //Author a =new Author();
+  //System.out.println(a.getAuthorID());
       Gson objGson = new GsonBuilder().setPrettyPrinting().create();
        System.out.println("1.Convert list of book objects to Json");
        String json = objGson.toJson(IB.selectListBook());

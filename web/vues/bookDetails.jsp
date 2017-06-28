@@ -31,6 +31,7 @@
 
         <div class="col-md-4"> 
             <img src="<%=application.getContextPath() %>/vues/img/bookCovers/<%=detailedBook.getBookImageId()%>.png" alt="Book Cover" class="img-thumbnail">
+            <input type="hidden" name="beanBook.bookImageId" value="<%=detailedBook.getBookImageId()%>"/>
             <div id="editBookButtons" class="">
                 <a id="updateBook" onclick="updateBook()" class="btn btn-block btn-success"><span class="glyphicon glyphicon-edit"></span> Edit Book</a>
                 <a id="deleteBook" onclick="deleteBook(<%=detailedBook.getBookID()%>)" class="btn btn-block btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete Book</a>
@@ -39,6 +40,10 @@
 
         <table class="pull-right col-md-8" style="font-size: 15px">
             <tbody>
+                <tr>
+                    <td class="col-md-3"><strong>Book ID :</strong></td>
+                    <td id="bookID" class="col-md-9"><%=detailedBook.getBookID()%><input type="hidden" name="beanBook.bookID" value="<%=detailedBook.getBookID()%>"/></td>
+                </tr>
                 <tr>
                     <td class="col-md-3"><strong>Author :</strong></td>
                     <td id="firstName" class="col-md-9"><%=detailedBook.getBookAuthor().getAuthorFirstName() + " " + detailedBook.getBookAuthor().getAuthorLastName()%></td>
@@ -66,6 +71,10 @@
                 <tr>
                     <td class="col-md-3"><strong>Reference :</strong></td>
                     <td id="reference" class="col-md-9"><%=detailedBook.getBookReferance()%></td>
+                </tr>
+                 <tr>
+                    <td class="col-md-3"><strong>Books In Store :</strong></td>
+                    <td id="inStore" class="col-md-9"><%=detailedBook.getBooksInStore()%></td>
                 </tr>
                 <tr>
                     <td class="col-md-3"><strong>Summary :</strong></td>
