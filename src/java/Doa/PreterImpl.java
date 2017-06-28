@@ -19,7 +19,7 @@ import java.util.List;
  * @author YS
  */
 public class PreterImpl implements IPreter {
-IUser iu=new UserImpl();
+Select select=new Select();
 IBook ib=new BookImpl();
     @Override
     public boolean addPreter(Preter p) {
@@ -115,7 +115,7 @@ IBook ib=new BookImpl();
                              book=new Book();
                              u.setUserID(Integer.parseInt(s.getString("UserID")));
                              book.setBookID(Integer.parseInt(s.getString("BookID")));
-                             u=iu.selectUser(u);
+                             u=select.selectUser(u);
                              book=ib.selectBook(book);
                              p.setBook(book);
                              p.setUser(u);

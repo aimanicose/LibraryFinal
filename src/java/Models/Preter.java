@@ -1,12 +1,14 @@
 package Models;
 
+import java.io.Serializable;
+
 
 /**
  * @author YS
  * @version 1.0
  * @created 09-juin-2017 22:24:31
  */
-public class Preter {
+public class Preter implements Serializable {
 
 	private Book Book;
 	private User User;

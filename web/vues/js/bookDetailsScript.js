@@ -28,17 +28,17 @@ function updateBook(){
     inputs.push(bookNameV);
     
     var firstNameV = $("#firstName").html();
-    var firstNameI = $("<input>", { val: firstNameV,type: "text",size:"30",name:"firstName", id:"bean_firstName" });
+    var firstNameI = $("<input>", { val: firstNameV,type: "text",size:"30",name:"bookAuthor", id:"bean_firstName" });
     $("#firstName").html(firstNameI);
     inputs.push(firstNameV);
     
     var editorV = $("#editor").html();
-    var editorI = $("<input>", { val: editorV,type: "text",size:"30",name:"editor", id:"bean_editor"  });
+    var editorI = $("<input>", { val: editorV,type: "text",size:"30",name:"bookEditor", id:"bean_editor"  });
     $("#editor").html(editorI);
     inputs.push(editorV);
     
     var genreV = $("#genre").html();
-    var genreI = $("<input>", { val: genreV,type: "text",size:"30",name:"genre", id:"bean_genre"  });
+    var genreI = $("<input>", { val: genreV,type: "text",size:"30",name:"bookGenre", id:"bean_genre"  });
     $("#genre").html(genreI);
     inputs.push(genreV);
     
@@ -79,9 +79,9 @@ function updateBook(){
 
 function cancelUpdate(){
     document.getElementById("bookName").innerHTML = inputs[0];
-    document.getElementById("firstName").innerHTML = inputs[1];
-    document.getElementById("editor").innerHTML = inputs[2];
-    document.getElementById("genre").innerHTML = inputs[3];
+    document.getElementById("bookAuthor").innerHTML = inputs[1];
+    document.getElementById("bookEditor").innerHTML = inputs[2];
+    document.getElementById("bookGenre").innerHTML = inputs[3];
     document.getElementById("language").innerHTML = inputs[4];
     document.getElementById("date").innerHTML = inputs[5];
     document.getElementById("price").innerHTML = inputs[6];

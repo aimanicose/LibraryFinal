@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="Models.Book"%>
+<%@page import="Models.Preter"%>
 <%@page import="com.google.gson.Gson"%><%@taglib uri="/struts-tags" prefix="s" %>
 <%@taglib uri="http://displaytag.sf.net" prefix="display" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -100,31 +100,35 @@
                         <div class="panel-body">
                             <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                                 <thead>
-                                    <tr>
-                                        <th  class="center">Domain</th>
-                                        <th>Price</th>
-                                        <th class="hidden-480">Clicks</th>
-                                        <th>
-                                            <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-                                            Update
-                                        </th>
-                                        <th class="hidden-480">Status</th>
-                                        <th></th>
-                                    </tr>
+                                    <thead>
+                                            <tr>
+                                                <th class="pointer" onclick="sortTable(0)">User Name</th>
+                                                <th class="pointer" onclick="sortTable(1)">Book's name</th>
+                                                <th class="pointer" onclick="sortTable(2)">Date Sortie</th>
+                                                <th class="pointer" onclick="sortTable(3)">Message</th>
+                                                <th class="pointer" onclick="sortTable(4)">Reference</th>
+                                                <th class="pointer" onclick="sortTable(5)">Statut</th>
+                                                <th class="pointer" onclick="sortTable(6)">Date Entree</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
                                 </thead>
 
                                 <tbody>
-                                    <tr>
-                                        <td class="center">
-                                            <a href="#">app.com</a>
-                                        </td>
-                                        <td>$45</td>
-                                        <td class="hidden-480">3,330</td>
-                                        <td>Feb 12</td>
-                                        <td class="hidden-480">
-                                            <span class="label label-sm label-warning">Expiring</span>
-                                        </td>
-                                        <td>
+                                     <% 
+                                                List<Preter> preterList = (List<Preter>)session.getAttribute("pretersList");
+                                                for(int i=0;i<preterList.size();i++){
+                                                Preter preter = (Preter)preterList.get(i);
+                                            %>
+                                            <tr>
+                                                <td><%=preter.getUser().getUserInformation().getUserFirstName()+ " " + preter.getUser().getUserInformation().getUserLastName() %></td>
+                                                <td><%=preter.getBook().getBookName()%></td>
+                                                <td><%=preter.getDateSortie()%></td>
+                                                <td><%=preter.getMessage()%></td>
+                                                <td><%=preter.getReference()%></td>
+                                                <td><%=preter.getStatut()%></td>
+                                                <td><%=preter.getDateEntree()%></td>
+                                                <td>
                                             <div class="hidden-sm hidden-xs action-buttons">
                                                     <a class="blue" href="#">
                                                             <i class="ace-icon fa fa-search-plus bigger-130"></i>
@@ -173,133 +177,10 @@
                                                     </div>
                                             </div>
                                         </td>
-                                    </tr>
-
-                                    <tr>
-                                            <td class="center">
-                                                    <a href="#">base.com</a>
-                                            </td>
-                                            <td>$35</td>
-                                            <td class="hidden-480">2,595</td>
-                                            <td>Feb 18</td>
-
-                                            <td class="hidden-480">
-                                                    <span class="label label-sm label-success">Registered</span>
-                                            </td>
-
-                                            <td>
-                                                    <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="blue" href="#">
-                                                                    <i class="ace-icon fa fa-search-plus bigger-130"></i>
-                                                            </a>
-
-                                                            <a class="green" href="#">
-                                                                    <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>
-
-                                                            <a class="red" href="#">
-                                                                    <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                            </a>
-                                                    </div>
-
-                                                    <div class="hidden-md hidden-lg">
-                                                            <div class="inline pos-rel">
-                                                                    <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                                                                            <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-                                                                    </button>
-
-                                                                    <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                                                            <li>
-                                                                                    <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-                                                                                            <span class="blue">
-                                                                                                    <i class="ace-icon fa fa-search-plus bigger-120"></i>
-                                                                                            </span>
-                                                                                    </a>
-                                                                            </li>
-
-                                                                            <li>
-                                                                                    <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-                                                                                            <span class="green">
-                                                                                                    <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                                                                            </span>
-                                                                                    </a>
-                                                                            </li>
-
-                                                                            <li>
-                                                                                    <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-                                                                                            <span class="red">
-                                                                                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                                                                            </span>
-                                                                                    </a>
-                                                                            </li>
-                                                                    </ul>
-                                                            </div>
-                                                    </div>
-                                            </td>
-                                    </tr>
-
-                                    <tr>
-                                            <td class="center">
-                                                <a href="#">up.com</a>
-                                            </td>
-                                            <td>$95</td>
-                                            <td class="hidden-480">8,520</td>
-                                            <td>Feb 22</td>
-
-                                            <td class="hidden-480">
-                                                    <span class="label label-sm label-info arrowed arrowed-righ">Sold</span>
-                                            </td>
-
-                                            <td>
-                                                    <div class="hidden-sm hidden-xs action-buttons">
-                                                            <a class="blue" href="#">
-                                                                    <i class="ace-icon fa fa-search-plus bigger-130"></i>
-                                                            </a>
-
-                                                            <a class="green" href="#">
-                                                                    <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>
-
-                                                            <a class="red" href="#">
-                                                                    <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                            </a>
-                                                    </div>
-
-                                                    <div class="hidden-md hidden-lg">
-                                                            <div class="inline pos-rel">
-                                                                    <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                                                                            <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-                                                                    </button>
-
-                                                                    <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                                                            <li>
-                                                                                    <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-                                                                                            <span class="blue">
-                                                                                                    <i class="ace-icon fa fa-search-plus bigger-120"></i>
-                                                                                            </span>
-                                                                                    </a>
-                                                                            </li>
-
-                                                                            <li>
-                                                                                    <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-                                                                                            <span class="green">
-                                                                                                    <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                                                                            </span>
-                                                                                    </a>
-                                                                            </li>
-
-                                                                            <li>
-                                                                                    <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-                                                                                            <span class="red">
-                                                                                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                                                                            </span>
-                                                                                    </a>
-                                                                            </li>
-                                                                    </ul>
-                                                            </div>
-                                                    </div>
-                                            </td>
-                                    </tr>
+                                            </tr>
+                                  <%}
+                                            %>
+                                
                                 </tbody>
                             </table>
                         </div>

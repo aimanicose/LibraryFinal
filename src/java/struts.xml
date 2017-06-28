@@ -20,6 +20,11 @@
                 <result name="input">/vues/login/index.jsp</result>
         </action>
         
+        <action name="redirectBorrows" 
+                class="presentation.BorrowsAction" method="redirectBorrows">
+                <result name="success" type="redirect">/vues/borrowsList.jsp</result>
+        </action>
+        
         <action name="addBook" 
                 class="presentation.BooksAction" method="addBook">
                 <result name="success">/vues/booksList.jsp</result>

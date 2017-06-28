@@ -74,7 +74,7 @@ public class BookImpl implements IBook {
     try
     {
       c=ConnectionManager.getInstance().etablirconnection();
-      String req="UPDATE book SET bookSummary = '"+b.getBookSummary().replace("'","''")+"',bookReferance = '"+b.getBookReferance()+"',bookImageId = '"+b.getBookImageId()+"',booksInStore = '"+b.getBooksInStore()+"',BookLanguage = '"+b.getBookLanguage()+"',BookName = '"+b.getBookName()+"',BookPrice = "+b.getBookPrice()+",PublicationDate = '"+b.getBookPublicationDate()+"',AuthorID = "+b.getBookAuthor().getAuthorID()+",EditorID = "+b.getBookEditor().getEditorID()+",GenreID = "+b.getBookGenre().getGenreID()+" WHERE BookID = "+b.getBookID()+"";
+      String req="UPDATE book SET bookSummary = '"+b.getBookSummary().replace("'","''")+"',bookReferance = '"+b.getBookReferance()+"',bookImageId = '"+b.getBookImageId()+"',booksInStore = '"+b.getBooksInStore()+"',BookLanguage = '"+b.getBookLanguage()+"',BookName = '"+b.getBookName()+"',BookPrice = "+b.getBookPrice()+",PublicationDate = '"+b.getBookPublicationDate()+"',AuthorID = (select AuthorID from author where AuthorFirstname='"+b.getBookAuthor().getAuthorFirstName()+"'),EditorID = (select EditorID from editor where EditorName= '"+b.getBookEditor().getEditorName()+"'),GenreID=(select GenreID from bookgenre where GenreName='"+b.getBookGenre().getGenreName()+"') WHERE BookID = "+b.getBookID()+"";
       Statement st=c.createStatement();
       st.execute(req);
       bool=true;

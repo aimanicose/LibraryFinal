@@ -435,4 +435,48 @@ public class Select {
 		
 		return p1;
     }
+     public User selectUser(User u) {
+        User u1=null;
+        Profile p1=null;
+        
+                Connection c=null;
+		
+                ResultSet s;
+		try
+		{
+			c=ConnectionManager.getInstance().etablirconnection();
+                        
+			String req="select * from user where UserID ="+u.getUserID()+"";
+                      
+                        Statement st=c.createStatement();
+                        s=st.executeQuery(req);
+                        
+			
+			
+			while(s.next())
+			{
+			     u1=new User();
+                             p1=new Profile();
+                             p1.setProfileID(Integer.parseInt(s.getString("ProfilID")));
+                             u1.setUserID(Integer.parseInt(s.getString("UserID")));
+                             u1.setLogin(s.getString("login"));
+                             u1.setPassword(s.getString("password"));
+                             u1.setUserProfile(selectprofile(p1));
+                             u1.setUserInformation(selectuserinformation(u1));
+                             
+                 
+
+			}
+                        
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally{
+			ConnectionManager.getInstance().fermerConnection(c);
+		}
+		
+		return u1;
+    }
 }

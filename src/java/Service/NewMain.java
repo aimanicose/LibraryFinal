@@ -70,7 +70,7 @@ public class NewMain {
   //System.out.println(a.getAuthorID());
       Gson objGson = new GsonBuilder().setPrettyPrinting().create();
        System.out.println("1.Convert list of book objects to Json");
-       String json = objGson.toJson(IB.selectListBook());
+       String json = objGson.toJson(ips.selectPreter());
        System.out.println(json);
            //FileWriter fileWriter = new FileWriter("D:\\books.json");
            // fileWriter.write(json);

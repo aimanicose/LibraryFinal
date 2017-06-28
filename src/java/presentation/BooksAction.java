@@ -24,7 +24,6 @@ import org.apache.struts2.ServletActionContext;
 import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
-import javax.servlet.ServletException;
 
 public class BooksAction extends ActionSupport {
   private File fileUpload;
@@ -39,6 +38,9 @@ public class BooksAction extends ActionSupport {
   private String borrowDate;
   private String borrowSumary;
   private Book beanBook;
+  private String bookAuthor;
+  private String bookEditor;
+  private String bookGenre;
   
   
   public String redirectBooks(){
@@ -83,11 +85,11 @@ public class BooksAction extends ActionSupport {
     List<Book> bookList = new ArrayList<Book>();
     IBookService bookService = new BookServiceImpl();
     Author testA = new Author();
-    testA.setAuthorID(15869);
+    testA.setAuthorFirstName(bookAuthor);
     Editor testE = new Editor();
-    testE.setEditorID(2);
+    testE.setEditorName(bookEditor);
     BookGenre testG = new BookGenre();
-    testG.setGenreID(1);
+    testG.setGenreName(bookGenre);
     
     beanBook.setBookEditor(testE);
     beanBook.setBookAuthor(testA);
@@ -111,20 +113,20 @@ public class BooksAction extends ActionSupport {
     Author a=new Author();
     a.setAuthorLastName(getBookAuthor());
     Editor e=new Editor();
-    e.setEditorName(bookEditor);
+    e.setEditorName(getBookEditor());
     BookGenre bg=new BookGenre();
-    bg.setGenreName(bookGenre);
-    book.setBookPrice(bookPrice);
+    bg.setGenreName(getBookGenre());
+    book.setBookPrice(beanBook.getBookPrice());
     book.setBookAuthor(a);
     book.setBookEditor(e);
     book.setBookGenre(bg);
     book.setBookImageId(fileUploadFileName);
-    book.setBookLanguage(bookLanguage);
-    book.setBookName(bookName);
-    book.setBookPublicationDate(bookPubliciation);
-    book.setBookReferance(booksreference);
-    book.setBookSummary(bookSumary);
-    book.setBooksInStore(booksInStore);
+    book.setBookLanguage(beanBook.getBookLanguage());
+    book.setBookName(beanBook.getBookName());
+    book.setBookPublicationDate(beanBook.getBookPublicationDate());
+    book.setBookReferance(beanBook.getBookReferance());
+    book.setBookSummary(beanBook.getBookSummary());
+    book.setBooksInStore(beanBook.getBooksInStore());
     Image img = ImageIO.read(fileUpload);
     BufferedImage bi = (BufferedImage)img;
     File f = new File("C:\\Users\\YS\\Documents\\NetBeansProjects\\LibraryFinal\\web\\vues\\img\\bookCovers\\"+fileUploadFileName+".png");
@@ -261,4 +263,46 @@ public class BooksAction extends ActionSupport {
   public void setBeanBook(Book beanBook) {
     this.beanBook = beanBook;
   }
+
+    /**
+     * @return the bookAuthor
+     */
+    public String getBookAuthor() {
+        return bookAuthor;
+    }
+
+    /**
+     * @param bookAuthor the bookAuthor to set
+     */
+    public void setBookAuthor(String bookAuthor) {
+        this.bookAuthor = bookAuthor;
+    }
+
+    /**
+     * @return the bookEditor
+     */
+    public String getBookEditor() {
+        return bookEditor;
+    }
+
+    /**
+     * @param bookEditor the bookEditor to set
+     */
+    public void setBookEditor(String bookEditor) {
+        this.bookEditor = bookEditor;
+    }
+
+    /**
+     * @return the bookGenre
+     */
+    public String getBookGenre() {
+        return bookGenre;
+    }
+
+    /**
+     * @param bookGenre the bookGenre to set
+     */
+    public void setBookGenre(String bookGenre) {
+        this.bookGenre = bookGenre;
+    }
 }

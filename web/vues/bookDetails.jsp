@@ -46,7 +46,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-3"><strong>Author :</strong></td>
-                    <td id="firstName" class="col-md-9"><%=detailedBook.getBookAuthor().getAuthorFirstName() + " " + detailedBook.getBookAuthor().getAuthorLastName()%></td>
+                    <td id="firstName" class="col-md-9"><%=detailedBook.getBookAuthor().getAuthorFirstName()%></td>
                 </tr>
                 <tr>
                     <td class="col-md-3"><strong>Editor :</strong></td>
