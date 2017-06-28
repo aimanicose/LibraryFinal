@@ -1,6 +1,9 @@
 package presentation;
 
+import Models.Author;
 import Models.Book;
+import Models.BookGenre;
+import Models.Editor;
 import Models.Preter;
 import Models.User;
 import Service.BookServiceImpl;
@@ -30,27 +33,18 @@ public class BooksAction extends ActionSupport {
   private InputStream stream;
   private InputStream inOutBooks;
   private int bookId;
-  private String firstName;
-  private String editor;
-  private String genre;
-  private String language;
-  private String date;
-  private double price;
-  private String reference;
-  private String summary;
   private List<Object> authorEditorInfo;
   private List<Book> borrowBookList;
   private User borrowUser;
   private String borrowDate;
   private String borrowSumary;
+  private Book beanBook;
   
   
   public String redirectBooks(){
     List<Book> bookList = new ArrayList<Book>();
     IBookService bookService = new BookServiceImpl();
     bookList = bookService.selectListBook();
-    
-    
     ServletActionContext.getRequest().getSession().setAttribute("booksList", bookList);
     return "success";
   }
@@ -85,35 +79,37 @@ public class BooksAction extends ActionSupport {
   }
   
   public String updateBook(){
-    /*
-    Author author = new Author(firstName,firstName,1);
-    Editor editorN = new Editor(1,editor);
-    BookGenre genreN = new BookGenre(1, genre);
-    Book book1 = new Book(author, editorN, genreN, 1, language, "FRED The lonely monster", price, date);
-    
-    bookList.add(book1);
-    */
-    
     List<Book> bookList = new ArrayList<Book>();
     IBookService bookService = new BookServiceImpl();
-    Book book = new Book();
-    book.setBookID(bookId);
-    book.setBookPrice(price);
-    boolean updated = bookService.updateBook(book);
-    ServletActionContext.getRequest().getSession().setAttribute("booksList", bookList);
-    return "success";
+    Author testA = new Author();
+    testA.setAuthorID(15869);
+    Editor testE = new Editor();
+    testE.setEditorID(2);
+    BookGenre testG = new BookGenre();
+    testG.setGenreID(1);
+    
+    beanBook.setBookEditor(testE);
+    beanBook.setBookAuthor(testA);
+    beanBook.setBookGenre(testG);
+    
+    boolean updated = bookService.updateBook(beanBook);
+    if(updated == true){
+      bookList =  bookService.selectListBook();
+      ServletActionContext.getRequest().getSession().setAttribute("booksList", bookList);
+      return "success";
+    }else{
+      return "failure";
+    }
   }
   
   public String authorEditorInfo(){
     authorEditorInfo = new ArrayList<Object>();
-    //Author author = new Author("A","B",1);
-    //authorEditorInfo.add(author);
     return "json";
   }
   
   public String bookAllocation(){
     IPreterService preter = new PreterServiceImpl();
-    
+  
     for(Book book:borrowBookList){
       Preter p =  new Preter();
       p.setBook(book);
@@ -160,70 +156,6 @@ public class BooksAction extends ActionSupport {
   
   public InputStream getStream() {
     return stream;
-  }
-  
-  public String getFirstName() {
-    return firstName;
-  }
-  
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
-  
-  public String getEditor() {
-    return editor;
-  }
-  
-  public void setEditor(String editor) {
-    this.editor = editor;
-  }
-  
-  public String getGenre() {
-    return genre;
-  }
-  
-  public void setGenre(String genre) {
-    this.genre = genre;
-  }
-  
-  public String getLanguage() {
-    return language;
-  }
-  
-  public void setLanguage(String language) {
-    this.language = language;
-  }
-  
-  public String getDate() {
-    return date;
-  }
-  
-  public void setDate(String date) {
-    this.date = date;
-  }
-  
-  public double getPrice() {
-    return price;
-  }
-  
-  public void setPrice(double price) {
-    this.price = price;
-  }
-  
-  public String getReference() {
-    return reference;
-  }
-  
-  public void setReference(String reference) {
-    this.reference = reference;
-  }
-  
-  public String getSummary() {
-    return summary;
-  }
-  
-  public void setSummary(String summary) {
-    this.summary = summary;
   }
   
   public List<Object> getAuthorEditorInfo() {
@@ -298,8 +230,12 @@ public class BooksAction extends ActionSupport {
   public void setFileUpload(File fileUpload) {
     this.fileUpload = fileUpload;
   }
-  
-  
-  
-  
+
+  public Book getBeanBook() {
+    return beanBook;
+  }
+
+  public void setBeanBook(Book beanBook) {
+    this.beanBook = beanBook;
+  }
 }
