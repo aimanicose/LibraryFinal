@@ -90,9 +90,13 @@
                       
                     <ul id="myUL" class="uk-list formattedList">  
                     <% 
-                        List<Author> authorsList = (List<Author>)session.getAttribute("auhtorsList");
+                        List<Author> authorsList=null;
+                        Author author=null;
+                        if(session.getAttribute("auhtorsList")!=null)
+                        {
+                        authorsList = (List<Author>)session.getAttribute("auhtorsList");
                         for(int i=0;i<authorsList.size();i++){
-                        Author author = (Author)authorsList.get(i);
+                        author = (Author)authorsList.get(i);
                         
                     %>
                   
@@ -102,7 +106,7 @@
                             </li>
                         </div>
                 
-                    <%}
+                    <%}}
                     %>
                     </ul>
                     

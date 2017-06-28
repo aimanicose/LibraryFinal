@@ -115,10 +115,13 @@
                                 </thead>
 
                                 <tbody>
-                                     <% 
-                                                List<Preter> preterList = (List<Preter>)session.getAttribute("pretersList");
+                                     <% List<Preter> preterList=null;
+                                             Preter preter =null;
+                                             if(session.getAttribute("pretersList")!=null)
+                                             {
+                                                preterList = (List<Preter>)session.getAttribute("pretersList");
                                                 for(int i=0;i<preterList.size();i++){
-                                                Preter preter = (Preter)preterList.get(i);
+                                                preter = (Preter)preterList.get(i);
                                             %>
                                             <tr>
                                                 <td><%=preter.getUser().getUserInformation().getUserFirstName()+ " " + preter.getUser().getUserInformation().getUserLastName() %></td>
@@ -178,7 +181,7 @@
                                             </div>
                                         </td>
                                             </tr>
-                                  <%}
+                                  <%}}
                                             %>
                                 
                                 </tbody>

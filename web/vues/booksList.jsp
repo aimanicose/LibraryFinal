@@ -117,9 +117,16 @@
                                         </thead>
                                         <tbody>
                                             <% 
-                                                List<Book> booksList = (List<Book>)session.getAttribute("booksList");
+                                                List<Book> booksList =null;
+                                                Book book=null;
+                                                if(session.getAttribute("booksList")!=null)
+                                                {
+                                                booksList = (List<Book>)session.getAttribute("booksList");
                                                 for(int i=0;i<booksList.size();i++){
-                                                Book book = (Book)booksList.get(i);
+                                                book = (Book)booksList.get(i);
+                                                    
+                                              
+                                                
                                             %>
                                             <tr>
                                                 <td><%=book.getBookID()%></td>
@@ -134,7 +141,7 @@
                                             </tr>
                                             
                                            
-                                            <%}
+                                            <%}}
                                             %>
                                             <div class="container">
                                                 <div id="bookDetailsModal" class="modal fade" role="dialog">
