@@ -97,11 +97,11 @@
                             <form name="form-create" action="addBook.action" method="POST" enctype="multipart/form-data" >
                                 <div class="form-group">
                                     <label for="bookName">Book's Name</label>
-                                    <input type="input" class="form-control" id="bookName" name="bookName" placeholder="Enter book name" />
+                                    <input type="input" class="form-control" id="bookName" name="beanBook.bookName" placeholder="Enter book name" />
                                 </div>
                                 <div class="form-group">
                                     <label for="bookLanguage">Book's Language</label>
-                                    <input type="text" class="form-control" id="bookLanguage" name="bookLanguage" placeholder="Enter book language" />
+                                    <input type="text" class="form-control" id="bookLanguage" name="beanBook.bookLanguage" placeholder="Enter book language" />
                                 </div>
                                 <div class="form-group">
                                     <label for="bookAuthor">Book's Author</label>
@@ -121,19 +121,19 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="bookPubliciation">Book's Publication Date</label>
-                                    <input type="text" class="form-control" id="bookPubliciation" name="bookPubliciation" placeholder="Enter book publication date" />
+                                    <input type="text" class="form-control" id="bookPubliciation" name="beanBook.bookPubliciationDate" placeholder="Enter book publication date" />
                                 </div>
                                 <div class="form-group">
                                     <label for="booksInStore">Books In Store</label>
-                                    <input type="text" class="form-control" id="booksInStore" name="booksInStore" placeholder="Enter the number of books in store" />
+                                    <input type="text" class="form-control" id="booksInStore" name="beanBook.booksInStore" placeholder="Enter the number of books in store" />
                                 </div>
                                  <div class="form-group">
                                     <label for="booksreference">Books Reference</label>
-                                    <input type="text" class="form-control" id="booksreference" name="booksreference" placeholder="Enter book Reference" />
+                                    <input type="text" class="form-control" id="booksreference" name="beanBook.bookReferance" placeholder="Enter book Reference" />
                                 </div>
                                 <div class="form-group">
                                     <label for="bookSumary">Book's Sumary</label>
-                                    <textarea class="form-control" id="bookSumary" name="bookSumary" rows="5" placeholder="Enter the book's sumary"></textarea>
+                                    <textarea class="form-control" id="bookSumary" name="beanBook.bookSumary" rows="5" placeholder="Enter the book's sumary"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="bookImage">Book's Cover Image</label>

@@ -38,6 +38,9 @@ public class BooksAction extends ActionSupport {
   private User borrowUser;
   private String borrowDate;
   private String borrowSumary;
+  private String bookAuthor;
+  private String bookEditor;
+  private String bookGenre;
   private Book beanBook;
   
   
@@ -109,22 +112,15 @@ public class BooksAction extends ActionSupport {
     IBookService bookService = new BookServiceImpl();
     Book book = new Book();
     Author a=new Author();
-    a.setAuthorLastName(getBookAuthor());
+    a.setAuthorLastName(bookAuthor);
     Editor e=new Editor();
     e.setEditorName(bookEditor);
     BookGenre bg=new BookGenre();
     bg.setGenreName(bookGenre);
-    book.setBookPrice(bookPrice);
     book.setBookAuthor(a);
     book.setBookEditor(e);
     book.setBookGenre(bg);
     book.setBookImageId(fileUploadFileName);
-    book.setBookLanguage(bookLanguage);
-    book.setBookName(bookName);
-    book.setBookPublicationDate(bookPubliciation);
-    book.setBookReferance(booksreference);
-    book.setBookSummary(bookSumary);
-    book.setBooksInStore(booksInStore);
     Image img = ImageIO.read(fileUpload);
     BufferedImage bi = (BufferedImage)img;
     File f = new File("C:\\Users\\YS\\Documents\\NetBeansProjects\\LibraryFinal\\web\\vues\\img\\bookCovers\\"+fileUploadFileName+".png");
