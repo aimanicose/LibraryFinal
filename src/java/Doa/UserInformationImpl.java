@@ -27,7 +27,7 @@ public class UserInformationImpl implements IUserInformation {
 		try
 		{
 			c=ConnectionManager.getInstance().etablirconnection();
-			String req="insert into userinformation (UserID,UserAddress,UserBirthdate,UserEmail,UserFirstname,UserLastname) values("+ui.getUserID()+",'"+ui.getUserAddress()+"','"+ui.getUserBirthDate()+"','"+ui.getUserEmail()+"','"+ui.getUserFirstName()+"','"+ui.getUserLastName()+"',)";
+			String req="insert into userinformation (UserID,UserAddress,UserBirthdate,UserEmail,UserFirstname,UserLastname) values("+ui.getUserID()+",'"+ui.getUserAddress()+"','"+ui.getUserBirthDate()+"','"+ui.getUserEmail()+"','"+ui.getUserFirstName()+"','"+ui.getUserLastName()+"')";
 			Statement st=c.createStatement();
 			st.execute(req);
 			bool=true;

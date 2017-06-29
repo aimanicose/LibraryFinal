@@ -23,12 +23,9 @@ import org.apache.struts2.ServletActionContext;
 public class BorrowsAction extends ActionSupport {
     public String redirectBorrows(){
     List<Preter> pretersList = new ArrayList<Preter>();
-        IPreterService pretersService=new PreterServiceImpl();
+    IPreterService pretersService=new PreterServiceImpl();
     pretersList = pretersService.selectPreter();
-    System.out.println(pretersList.get(0).getBook().getBookName());
-    
     ServletActionContext.getRequest().getSession().setAttribute("pretersList", pretersList);
-    System.out.println(ServletActionContext.getRequest().getSession().getAttribute("pretersList"));
     return "success";
   }
 }

@@ -1,16 +1,21 @@
 package presentation;
 
 
+import Models.Profile;
 import Models.User;
+import Models.UserInformation;
 import Service.IUserService;
 import Service.UserServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 public class AuthAction extends ActionSupport {
-    IUserService IU=new UserServiceImpl();
+  IUserService IU=new UserServiceImpl();
   private User bean;
   private User autheticationUser;
+  private UserInformation beanui;
+  private Profile beanp;
+  
 
   public String connectUser(){
     
@@ -56,4 +61,42 @@ public class AuthAction extends ActionSupport {
 
    
   }
+   public String addUser(){
+
+    bean.setUserInformation(beanui); 
+    bean.setUserProfile(beanp);
+    IU.addUser(bean);   
+    return "success"; 
+    
+
+   
+  }
+
+    /**
+     * @return the beanui
+     */
+    public UserInformation getBeanui() {
+        return beanui;
+    }
+
+    /**
+     * @param beanui the beanui to set
+     */
+    public void setBeanui(UserInformation beanui) {
+        this.beanui = beanui;
+    }
+
+    /**
+     * @return the beanp
+     */
+    public Profile getBeanp() {
+        return beanp;
+    }
+
+    /**
+     * @param beanp the beanp to set
+     */
+    public void setBeanp(Profile beanp) {
+        this.beanp = beanp;
+    }
 }

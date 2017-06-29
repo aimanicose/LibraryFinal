@@ -19,10 +19,12 @@
                 <result name="error" type="redirect">/vues/login.jsp</result>
                 <result name="input">/vues/login/index.jsp</result>
         </action>
+       
         
-        <action name="redirectBorrows" 
-                class="presentation.BorrowsAction" method="redirectBorrows">
-                <result name="success" type="redirect">/vues/borrowsList.jsp</result>
+        <action name="addUser" 
+                class="presentation.AuthAction" method="addUser">
+                <result name="success">/vues/login.jsp</result>
+                
         </action>
         
         <action name="addBook" 
@@ -30,8 +32,7 @@
                 <result name="success">/vues/booksList.jsp</result>
                 
         </action>
-
-
+        
         <action name="logout" 
                 class="presentation.AuthAction" method="logout">
                 <result name="success" type="redirect">/vues/login.jsp</result>
@@ -70,7 +71,7 @@
         
         <action name="bookAllocation" 
                 class="presentation.BooksAction" method="bookAllocation">
-                <result name="success" type="redirect">/vues/borrowsList.jsp</result>
+                <result name="success" type="redirect">redirectBorrows.action</result>
         </action>
         
         <action name="getData" 
@@ -89,6 +90,11 @@
         <action name="authorDetails" 
                 class="presentation.AuthorsAction" method="authorDetails">
                 <result name="success">/vues/authorDetails.jsp</result>
+        </action>
+        
+        <action name="redirectBorrows" 
+                class="presentation.BorrowsAction" method="redirectBorrows">
+                <result name="success" type="redirect">/vues/borrowsList.jsp</result>
         </action>
     </package>
 </struts>

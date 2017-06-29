@@ -70,7 +70,7 @@
                             <ul id="menu-top" class="nav navbar-nav navbar-right">
                                 <li><a href="index.jsp">Dashboard</a></li>   
                                 <li><a href="<s:url action="redirectBooks" namespace="/vues" />">Books</a></li>
-                                <li><a class="menu-top-active" href="borrowsList.jsp">Borrows</a></li>
+                                <li><a class="menu-top-active" href="<s:url action="redirectBorrows" namespace="/vues" />">Borrows</a></li>
                                 <li><a href="<s:url action="authorsList" namespace="/vues" />">Authors</a></li>
                                 <li><a href="usersList.jsp">Users</a></li>
                                 <li><a href="forms.html">Shelfs</a></li>
@@ -98,92 +98,50 @@
                             Books currently allocated and their holders
                         </div>
                         <div class="panel-body">
-                            <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                            <table id="dynamic-table" class="table table-striped table-bordered table-hover display">
                                 <thead>
-                                    <thead>
-                                            <tr>
-                                                <th class="pointer" onclick="sortTable(0)">User Name</th>
-                                                <th class="pointer" onclick="sortTable(1)">Book's name</th>
-                                                <th class="pointer" onclick="sortTable(2)">Date Sortie</th>
-                                                <th class="pointer" onclick="sortTable(3)">Message</th>
-                                                <th class="pointer" onclick="sortTable(4)">Reference</th>
-                                                <th class="pointer" onclick="sortTable(5)">Statut</th>
-                                                <th class="pointer" onclick="sortTable(6)">Date Entree</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
+                                    <tr> 
+                                        <th class="center">Reference</th>
+                                        <th>User Name</th>
+                                        <th>Book's name</th>
+                                        <th>Borrowing Date</th>
+                                        <th>Bringing back Date</th>
+                                        <th>Message</th>
+                                        <th>Status</th>
+                                        <th></th>
+                                    </tr>
                                 </thead>
-
                                 <tbody>
-                                     <% List<Preter> preterList=null;
-                                             Preter preter =null;
-                                             if(session.getAttribute("pretersList")!=null)
-                                             {
-                                                preterList = (List<Preter>)session.getAttribute("pretersList");
+                                     <% 
+                                            List<Preter> preterList = (List<Preter>)session.getAttribute("pretersList");
+                                            Preter preter =null;
+                                            if(preterList.size()>0)
+                                            {
                                                 for(int i=0;i<preterList.size();i++){
                                                 preter = (Preter)preterList.get(i);
-                                            %>
+                                    %>
                                             <tr>
+                                                <td class="center"><%=preter.getReference()%></td>
                                                 <td><%=preter.getUser().getUserInformation().getUserFirstName()+ " " + preter.getUser().getUserInformation().getUserLastName() %></td>
                                                 <td><%=preter.getBook().getBookName()%></td>
                                                 <td><%=preter.getDateSortie()%></td>
-                                                <td><%=preter.getMessage()%></td>
-                                                <td><%=preter.getReference()%></td>
-                                                <td><%=preter.getStatut()%></td>
                                                 <td><%=preter.getDateEntree()%></td>
+                                                <td><%=preter.getMessage()%></td>
+                                                <td><span class="label label-sm <% if(preter.getStatut().equals("IN")){%>label-success<%}else{%>label-warning<%}%>"><%=preter.getStatut()%></span></td>
                                                 <td>
                                             <div class="hidden-sm hidden-xs action-buttons">
-                                                    <a class="blue" href="#">
-                                                            <i class="ace-icon fa fa-search-plus bigger-130"></i>
-                                                    </a>
-
-                                                    <a class="green" href="#">
-                                                            <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                    </a>
-
-                                                    <a class="red" href="#">
-                                                            <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                    </a>
-                                            </div>
-
-                                            <div class="hidden-md hidden-lg">
-                                                    <div class="inline pos-rel">
-                                                            <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                                                                    <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-                                                            </button>
-
-                                                            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                                                    <li>
-                                                                            <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-                                                                                    <span class="blue">
-                                                                                            <i class="ace-icon fa fa-search-plus bigger-120"></i>
-                                                                                    </span>
-                                                                            </a>
-                                                                    </li>
-
-                                                                    <li>
-                                                                            <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-                                                                                    <span class="green">
-                                                                                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                                                                    </span>
-                                                                            </a>
-                                                                    </li>
-
-                                                                    <li>
-                                                                            <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-                                                                                    <span class="red">
-                                                                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                                                                    </span>
-                                                                            </a>
-                                                                    </li>
-                                                            </ul>
-                                                    </div>
+                                                <a class="blue" href="#">
+                                                    <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                                                </a>
+                                                <a class="green" href="#">
+                                                    <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                                </a>
                                             </div>
                                         </td>
-                                            </tr>
-                                  <%}}
-                                            %>
-                                
+                                    </tr>
+                                    <%}       
+                                    }
+                                    %>
                                 </tbody>
                             </table>
                         </div>

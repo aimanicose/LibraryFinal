@@ -23,6 +23,7 @@ IUserInformation iui=new UserInformationImpl();
     @Override
     public boolean addUser(User u) {
        boolean bool=iu.addUser(u);
+       u.getUserInformation().setUserID(iu.getUserID(u));
        iui.addUserInformation(u.getUserInformation());
        return bool;
     }

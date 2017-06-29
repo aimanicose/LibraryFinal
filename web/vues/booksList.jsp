@@ -104,14 +104,14 @@
                                   <table id="books-table" class="table table-striped table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th class="pointer" onclick="sortTable(0)">#</th>
-                                                <th class="pointer" onclick="sortTable(1)">Book's name</th>
-                                                <th class="pointer" onclick="sortTable(2)">Book's Author</th>
-                                                <th class="pointer" onclick="sortTable(3)">Book's Editor</th>
-                                                <th class="pointer" onclick="sortTable(4)">Book's Genre</th>
-                                                <th class="pointer" onclick="sortTable(5)">Book's Language</th>
-                                                <th class="pointer" onclick="sortTable(6)">Book's Publication</th>
-                                                <th class="pointer" onclick="sortTable(7)">Books in Library</th>
+                                                <th class="center">#</th>
+                                                <th>Book's name</th>
+                                                <th>Book's Author</th>
+                                                <th>Book's Editor</th>
+                                                <th>Book's Genre</th>
+                                                <th>Book's Language</th>
+                                                <th>Book's Publication</th>
+                                                <th>Books in Library</th>
                                                 <th>Details</th>
                                             </tr>
                                         </thead>
@@ -124,9 +124,6 @@
                                                 booksList = (List<Book>)session.getAttribute("booksList");
                                                 for(int i=0;i<booksList.size();i++){
                                                 book = (Book)booksList.get(i);
-                                                    
-                                              
-                                                
                                             %>
                                             <tr>
                                                 <td><%=book.getBookID()%></td>

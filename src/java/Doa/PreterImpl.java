@@ -28,7 +28,7 @@ IBook ib=new BookImpl();
 		try
 		{
 			c=ConnectionManager.getInstance().etablirconnection();
-			String req="insert into preter (UserID,BookID,DateSortie,Message,Reference,Statut,DateEntree) values("+p.getUser().getUserID()+",(Select bookId from Book where bookName = '"+p.getBook().getBookName()+"'),'"+p.getDateSortie()+"','"+p.getMessage()+"','"+p.getReference()+"','"+p.getStatut()+"','"+p.getDateEntree()+"')";
+			String req="insert into preter (UserID,BookID,DateSortie,Message,Statut,DateEntree) values("+p.getUser().getUserID()+",(Select bookId from Book where bookName = '"+p.getBook().getBookName()+"'),'"+p.getDateSortie()+"','"+p.getMessage()+"','"+p.getStatut()+"','"+p.getDateEntree()+"')";
 			String req1="Update book SET booksInStore=booksInStore - 1 WHERE BookName = '"+p.getBook().getBookName()+"'";
                         Statement st=c.createStatement();
                         st.execute(req);

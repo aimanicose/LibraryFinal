@@ -18,4 +18,5 @@ public interface IUser {
     boolean updateUser(User u);
     User selectUser(User u);
     List<User> selectListUser();
+    int getUserID(User u);
 }

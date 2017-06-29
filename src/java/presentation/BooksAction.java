@@ -154,7 +154,7 @@ public class BooksAction extends ActionSupport {
       p.setDateSortie(borrowDate);
       p.setMessage(borrowSumary);
       p.setUser(borrowUser);
-      
+      p.setStatut("OUT");
       preter.addPreter(p);
     }
     

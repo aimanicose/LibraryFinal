@@ -27,7 +27,7 @@ Select select =new Select();
 		try
 		{
 			c=ConnectionManager.getInstance().etablirconnection();
-			String req="insert into user (UserID,login,password,ProfilID) values("+u.getUserID()+",'"+u.getLogin()+"','"+u.getPassword()+"',"+u.getUserProfile().getProfileID()+")";
+			String req="insert into user (login,password,ProfilID) values('"+u.getLogin()+"','"+u.getPassword()+"',(Select ProfilID from profil where ProfilName='"+u.getUserProfile().getProfileName()+"'))";
                         Statement st=c.createStatement();
 			st.execute(req);
 			bool=true;
@@ -180,6 +180,46 @@ Select select =new Select();
 		}
 		
 		return u1;
+    }
+
+    @Override
+    public int getUserID(User u) {
+        int userID=0;
+        
+        
+                Connection c=null;
+		
+                ResultSet s;
+		try
+		{
+			c=ConnectionManager.getInstance().etablirconnection();
+                        
+			String req="select UserID from user where login ='"+u.getLogin()+"' and password='"+u.getPassword()+"' ";
+                      
+                        Statement st=c.createStatement();
+                        s=st.executeQuery(req);
+                        
+			
+			
+			while(s.next())
+			{
+			   userID=Integer.parseInt(s.getString("UserID"));
+                            
+                             
+                 
+
+			}
+                        
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally{
+			ConnectionManager.getInstance().fermerConnection(c);
+		}
+		
+		return userID;
     }
     
 }

@@ -80,7 +80,7 @@
                             
                         <div class="row">
                             <div class="col-md-2 col-md-offset-5">
-                                <i class="fa fa-user-plus login-icon" style="background-color: #ca1827"></i>
+                                <a href="<%=application.getContextPath() %>/vues/signup.jsp"><i class="fa fa-user-plus login-icon" style="background-color: #ca1827"></i></a>
                             </div>
                         </div>
                     </div>
