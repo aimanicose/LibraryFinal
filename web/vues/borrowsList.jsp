@@ -20,6 +20,7 @@
         <script src="<%=application.getContextPath() %>/vues/js/jquery-1.11.1.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/bootstrap.min.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/dataTable/datatables.min.js"></script>
+        <script src="<%=application.getContextPath() %>/vues/js/dataTable/jquery.dataTables.bootstrap.min.js"></script>
         <%
             response.setHeader("Cache-Control","no-cache");
             response.setHeader("Cache-Control","no-store");
