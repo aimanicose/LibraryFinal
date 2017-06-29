@@ -20,9 +20,7 @@
         <link rel="stylesheet" href="<%=application.getContextPath() %>/vues/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
         <script src="<%=application.getContextPath() %>/vues/js/jquery-3.2.1.min.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/bootstrap.min.js"></script>
-        
-        <script src="<%=application.getContextPath() %>/vues/js/dataTable/jquery.dataTables.min.js"></script>
-        <script src="<%=application.getContextPath() %>/vues/js/dataTable/jquery.dataTables.bootstrap.min.js"></script>
+        <script src="<%=application.getContextPath() %>/vues/js/dataTable/datatables.min.js"></script>
          <%
             response.setHeader("Cache-Control","no-cache");
             response.setHeader("Cache-Control","no-store");

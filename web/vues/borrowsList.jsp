@@ -19,12 +19,7 @@
         <link rel="stylesheet" href="<%=application.getContextPath() %>/vues/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
         <script src="<%=application.getContextPath() %>/vues/js/jquery-1.11.1.js"></script>
         <script src="<%=application.getContextPath() %>/vues/js/bootstrap.min.js"></script>
-         
-        <script src="<%=application.getContextPath() %>/vues/js/dataTable/jquery.dataTables.min.js"></script>
-        <script src="<%=application.getContextPath() %>/vues/js/dataTable/jquery.dataTables.bootstrap.min.js"></script>
-        <script src="<%=application.getContextPath() %>/vues/js/dataTable/dataTables.buttons.min.js"></script>
-        <script src="<%=application.getContextPath() %>/vues/js/dataTable/buttons.flash.min.js"></script>
-        <script src="<%=application.getContextPath() %>/vues/js/dataTable/buttons.print.min.js"></script>
+        <script src="<%=application.getContextPath() %>/vues/js/dataTable/datatables.min.js"></script>
         <%
             response.setHeader("Cache-Control","no-cache");
             response.setHeader("Cache-Control","no-store");
