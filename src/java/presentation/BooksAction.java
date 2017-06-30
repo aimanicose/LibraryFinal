@@ -131,10 +131,12 @@ public class BooksAction extends ActionSupport {
     book.setBookReferance(beanBook.getBookReferance());
     book.setBookSummary(beanBook.getBookSummary());
     book.setBooksInStore(beanBook.getBooksInStore());
+    
     Image img = ImageIO.read(fileUpload);
     BufferedImage bi = (BufferedImage)img;
     File f = new File("C:\\Users\\YS\\Documents\\NetBeansProjects\\LibraryFinal\\web\\vues\\img\\bookCovers\\"+fileUploadFileName+".png");
     ImageIO.write(bi, "png", f);
+    
     boolean add = bookService.addBook(book);
     bookList=bookService.selectListBook();
     ServletActionContext.getRequest().getSession().setAttribute("booksList", bookList);

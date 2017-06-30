@@ -24,17 +24,19 @@ public class BookImpl implements IBook {
   public boolean addBook(Book b) {
     Connection c=null;
     boolean bool=false;
-    try
-    {
-      
+    try {
       c=ConnectionManager.getInstance().etablirconnection();
-      String req="insert into book (BookLanguage,BookName,BookPrice,PublicationDate,bookSummary,bookReferance,bookImageId,booksInStore,AuthorID,EditorID,GenreID) values('"+b.getBookLanguage()+"','"+b.getBookName()+"',"+b.getBookPrice()+",'"+b.getBookPublicationDate()+"','"+b.getBookSummary()+"','"+b.getBookReferance()+"','"+b.getBookImageId()+"',"+b.getBooksInStore()+",(select AuthorID from author where AuthorLastname='"+b.getBookAuthor().getAuthorLastName()+"'),(select EditorID from editor where EditorName= '"+b.getBookEditor().getEditorName()+"'),(select GenreID from bookgenre where GenreName='"+b.getBookGenre().getGenreName()+"'))";
+      String req="insert into book (BookLanguage,BookName,BookPrice,PublicationDate,bookSummary,bookReferance,bookImageId,booksInStore,"
+              + "AuthorID,EditorID,GenreID) values('"+b.getBookLanguage()+"','"+b.getBookName()+"',"+b.getBookPrice()+","
+              + "'"+b.getBookPublicationDate()+"','"+b.getBookSummary()+"','"+b.getBookReferance()+"','"+b.getBookImageId()+"',"
+              + ""+b.getBooksInStore()+",(select AuthorID from author where AuthorLastname='"+b.getBookAuthor().getAuthorLastName()+"'),"
+              + "(select EditorID from editor where EditorName= '"+b.getBookEditor().getEditorName()+"'),"
+              + "(select GenreID from bookgenre where GenreName='"+b.getBookGenre().getGenreName()+"'))";
       Statement st=c.createStatement();
       st.execute(req);
       bool=true;
     }
-    catch(Exception e)
-    {
+    catch(Exception e){
       e.printStackTrace();
     }
     finally{
@@ -327,6 +329,5 @@ public class BookImpl implements IBook {
     }
     return b1;
   }
-  
 }
 

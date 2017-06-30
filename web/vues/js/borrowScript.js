@@ -29,6 +29,6 @@ jQuery(function($) {
                 autoPrint: true
             }		  
         ]
-    } );
+    });
     myTable.buttons().container().appendTo( $('.tableTools-container') );
 });

@@ -1,6 +1,4 @@
 package presentation;
-
-
 import Models.Profile;
 import Models.User;
 import Models.UserInformation;
@@ -11,92 +9,80 @@ import org.apache.struts2.ServletActionContext;
 
 public class AuthAction extends ActionSupport {
   IUserService IU=new UserServiceImpl();
-  private User bean;
-  private User autheticationUser;
   private UserInformation beanui;
   private Profile beanp;
+  private User autheticationUser;
+  //bean est un objet User ayant des attributs login et password
+  private User bean;
   
-
   public String connectUser(){
     
-    autheticationUser = IU.selectUser(bean) ;
+    autheticationUser = IU.selectUser(bean);
     
-    
-    if(autheticationUser == null)
-    {
+    if(autheticationUser == null){
       return "error";
     }
-    else
-    {
+    else{
       ServletActionContext.getRequest().getSession().setAttribute("userSession", autheticationUser.getLogin());
-      return "success"; 
+      return "success";
     }
-
-   
   }
   
   @Override
   public void validate(){
     if(bean == null){
-        return;
+      return;
     }
     if(bean.getLogin().trim().length() == 0){
-        addFieldError("errorLogin", "Required");
+      addFieldError("errorLogin", "Required");
     }
   }
-
+  
   public User getBean() {
     return bean;
   }
-
+  
   public void setBean(User bean) {
     this.bean = bean;
   }
+  
   public String logout(){
-    
-    
-      ServletActionContext.getRequest().getSession().invalidate();
-      return "success"; 
-    
-
-   
+    ServletActionContext.getRequest().getSession().invalidate();
+    return "success";
   }
-   public String addUser(){
-
-    bean.setUserInformation(beanui); 
+  
+  public String addUser(){
+    bean.setUserInformation(beanui);
     bean.setUserProfile(beanp);
-    IU.addUser(bean);   
-    return "success"; 
-    
-
-   
+    IU.addUser(bean);
+    return "success";
   }
-
-    /**
-     * @return the beanui
-     */
-    public UserInformation getBeanui() {
-        return beanui;
-    }
-
-    /**
-     * @param beanui the beanui to set
-     */
-    public void setBeanui(UserInformation beanui) {
-        this.beanui = beanui;
-    }
-
-    /**
-     * @return the beanp
-     */
-    public Profile getBeanp() {
-        return beanp;
-    }
-
-    /**
-     * @param beanp the beanp to set
-     */
-    public void setBeanp(Profile beanp) {
-        this.beanp = beanp;
-    }
+  
+  /**
+   * @return the beanui
+   */
+  public UserInformation getBeanui() {
+    return beanui;
+  }
+  
+  /**
+   * @param beanui the beanui to set
+   */
+  public void setBeanui(UserInformation beanui) {
+    this.beanui = beanui;
+  }
+  
+  /**
+   * @return the beanp
+   */
+  public Profile getBeanp() {
+    return beanp;
+  }
+  
+  /**
+   * @param beanp the beanp to set
+   */
+  public void setBeanp(Profile beanp) {
+    this.beanp = beanp;
+  }
 }

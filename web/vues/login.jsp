@@ -56,7 +56,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <form name="form-login" action="vues/authentication.action">
+                        <form name="form-login" action="vues/authentication.action" method="post">
                             <hr />
                             <h4>Login with <strong>your Library Account  :</strong></h4>
                             <br />
