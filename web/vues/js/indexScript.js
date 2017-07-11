@@ -27,4 +27,31 @@ $(document).ready(function() {
         format: "dd/mm/yyyy",
         autoclose: true
     });
+    
+    getNotificationsList();
 });
+
+
+function getNotificationsList(){
+    $.ajax({
+        url : "http://localhost:8080/Library_Final/vues/notifications.action",
+        type : "GET",
+        success : function(data) {
+            if(data){
+                data = JSON.parse(data);
+                var notifs = "";
+                
+                if(data.length === 0){
+                    notifs = notifs + "<li><a><span class=\"glyphicon glyphicon-info-sign text-success\" ></span> No notifications to display </a></li>"
+                }else{
+                    data.forEach(function(item,index){
+                        notifs = notifs + "<li><a><span class=\"glyphicon glyphicon-info-sign text-danger\" ></span>"+item+"</a></li>"
+                    });
+                }
+                    
+                document.getElementById("notificationsNumber").innerHTML = data.length;
+                document.getElementById("notificationsBord").innerHTML = notifs;
+            }
+        }
+    });
+}

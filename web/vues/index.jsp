@@ -125,7 +125,7 @@
                             <a href="#">
                                 <i  class="fa fa-bell-o dashboard-div-icon"></i>
                             </a>
-                            <h3>10<h3/>
+                            <h3 id="notificationsNumber">0<h3/>
                                 <h5>Notifications</h5>
                         </div>
                     </div>
@@ -186,60 +186,16 @@
                     </div>
                     <div class="col-md-6">
                         <div class="notice-board">
-                            <div class="panel panel-default">
+                            <div class="panel panel-default" style="border-radius: 4px;">
                                 <div class="panel-heading">
-                                    Active  Notice Panel 
-                                    <div class="pull-right" >
-                                        <div class="dropdown">
-                                            <button class="btn btn-success dropdown-toggle btn-xs" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                                                <span class="glyphicon glyphicon-cog"></span>
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Refresh</a></li>
-                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Logout</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    Notifications
                                 </div>
                                 <div class="panel-body">
-                                    
-                                    <ul >
-                                        
-                                        <li>
-                                            <a href="#">
-                                                <span class="glyphicon glyphicon-align-left text-success" ></span> 
-                                                Lorem ipsum dolor sit amet ipsum dolor sit amet
-                                                <span class="label label-warning" > Just now </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="glyphicon glyphicon-info-sign text-danger" ></span>  
-                                                Lorem ipsum dolor sit amet ipsum dolor sit amet
-                                                <span class="label label-info" > 2 min chat</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="glyphicon glyphicon-comment  text-warning" ></span>  
-                                                Lorem ipsum dolor sit amet ipsum dolor sit amet
-                                                <span class="label label-success" >GO ! </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="glyphicon glyphicon-edit  text-danger" ></span>  
-                                                Lorem ipsum dolor sit amet ipsum dolor sit amet
-                                                <span class="label label-success" >Let's have it </span>
-                                            </a>
-                                        </li>
-                                        </a>
-                                        </li>
+                                    <ul id="notificationsBord">
                                     </ul>
                                 </div>
                                 <div class="panel-footer">
-                                    <a href="#" class="btn btn-default btn-block"> <i class="glyphicon glyphicon-repeat"></i> Just A Small Footer Button</a>
+                                    <a style="cursor:pointer" class="btn btn-default btn-block" onclick="getNotificationsList()"> <i class="glyphicon glyphicon-repeat"></i> Refresh Notifications </a>
                                 </div>
                             </div>
                         </div>
