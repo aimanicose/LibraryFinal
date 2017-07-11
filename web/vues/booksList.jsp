@@ -86,18 +86,24 @@
                         <h4 class="page-head-line">Books List</h4>
                     </div>
                 </div>
-                <div class="row" style="margin-bottom: 10px;">
-                    <div class="col-md-3 col-md-offset-9">
-                        <a class="btn btn-default btn-md pull-right" href="createBook.jsp">
-                            <span class="glyphicon glyphicon-plus"></span> Add a new Book
-                        </a>
-                    </div>
-                </div>
+                
                  <div class="row">
                     <div class="col-md-12">
+                        <div class="clearfix">
+                            <div class="pull-right tableTools-container"></div>
+                        </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Books currently in library 
+                                <div class="row">
+                                    <div class="col-md-3 ">
+                                        Books currently in library 
+                                    </div>
+                                    <div class="col-md-3 col-md-offset-6">
+                                        <a class="btn btn-default btn-md pull-right" href="createBook.jsp">
+                                            <span class="glyphicon glyphicon-plus"></span> Add a new Book
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="panel-body">
                                   <table id="books-table" class="table table-striped table-bordered table-hover">

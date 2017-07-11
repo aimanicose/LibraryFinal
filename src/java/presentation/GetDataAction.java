@@ -28,6 +28,12 @@ public class GetDataAction {
     return SUCCESS;
   }
   
+  public String getNotifications(){
+   
+    
+    return SUCCESS;
+  }
+  
   public InputStream getStream() {
     return stream;
   }

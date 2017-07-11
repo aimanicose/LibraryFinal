@@ -79,9 +79,9 @@ function updateBook(){
 
 function cancelUpdate(){
     document.getElementById("bookName").innerHTML = inputs[0];
-    document.getElementById("bookAuthor").innerHTML = inputs[1];
-    document.getElementById("bookEditor").innerHTML = inputs[2];
-    document.getElementById("bookGenre").innerHTML = inputs[3];
+    document.getElementById("firstName").innerHTML = inputs[1];
+    document.getElementById("editor").innerHTML = inputs[2];
+    document.getElementById("genre").innerHTML = inputs[3];
     document.getElementById("language").innerHTML = inputs[4];
     document.getElementById("date").innerHTML = inputs[5];
     document.getElementById("price").innerHTML = inputs[6];

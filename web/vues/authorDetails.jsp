@@ -184,7 +184,7 @@
                                                             int rowsCounter = 0;
                                                             int index = 4;
 
-                                                            for(int i=0;i<2;i++){
+                                                            for(int i=0;i<rows;i++){
                                                                 if(i>0){
                                                         %>
                                                         <div class="item">
