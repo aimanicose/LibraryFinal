@@ -112,21 +112,21 @@
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-6">
-                        <div class="dashboard-div-wrapper bk-clr-three">
-                            <a href="#">
-                                <i  class="fa fa-cogs dashboard-div-icon" ></i>
-                            </a>
-                            <h3>Settings<h3/>
-                                <h5>Manage Store </h5>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="dashboard-div-wrapper bk-clr-four">
                             <a href="#">
                                 <i  class="fa fa-bell-o dashboard-div-icon"></i>
                             </a>
                             <h3 id="notificationsNumber">0<h3/>
                                 <h5>Notifications</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="dashboard-div-wrapper bk-clr-three">
+                            <a href="#">
+                                <i  class="fa fa-cogs dashboard-div-icon" ></i>
+                            </a>
+                            <h3>Settings<h3/>
+                                <h5>Manage Store </h5>
                         </div>
                     </div>
                 </div>
@@ -190,7 +190,7 @@
                                 <div class="panel-heading">
                                     Notifications
                                 </div>
-                                <div class="panel-body">
+                                <div class="panel-body scrollDiv">
                                     <ul id="notificationsBord">
                                     </ul>
                                 </div>

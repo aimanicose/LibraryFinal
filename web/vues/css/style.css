@@ -415,3 +415,9 @@ font-size:8px;
   padding-top:20%;
   width:3%;
 }
+
+.scrollDiv{
+    height: 479px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
