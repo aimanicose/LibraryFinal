@@ -22,4 +22,6 @@ public interface IBookService {
   int bookoutstore();
   
   Book getBookID(Book b);
+  
+  List<Book> ListBookZero();
 }

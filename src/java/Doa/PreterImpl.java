@@ -142,5 +142,57 @@ IBook ib=new BookImpl();
 		
 		return listpreter;
     }
+
+    @Override
+    public List<Preter> latebookslist() {
+        List<Preter> listpreter=new ArrayList<Preter>();
+        Book book=null;
+        User u=null;
+        Preter p=null;
+                Connection c=null;
+                ResultSet s;
+		try
+		{
+			c=ConnectionManager.getInstance().etablirconnection();              
+			String req="select * from preter where (TIMESTAMPDIFF(MONTH, date_format(STR_TO_DATE(`DateSortie`,\"%d/%m/%Y\"),'%Y-%m-%d'),DATE_FORMAT(NOW(), '%Y-%m-%d'))) >= 6 and statut='out'";
+                      
+                        Statement st=c.createStatement();
+                        s=st.executeQuery(req);
+                        
+			
+			
+			while(s.next())
+			{    p=new Preter();
+                             u=new User();
+                             book=new Book();
+                             u.setUserID(Integer.parseInt(s.getString("UserID")));
+                             book.setBookID(Integer.parseInt(s.getString("BookID")));
+                             u=select.selectUser(u);
+                             book=ib.selectBook(book);
+                             p.setBook(book);
+                             p.setUser(u);
+                             p.setMessage(s.getString("Message"));
+                             p.setDateSortie(s.getString("DateSortie"));
+                             p.setReference(s.getString("Reference"));
+                             p.setDateEntree(s.getString("DateEntree"));
+                             p.setStatut(s.getString("Statut"));
+                             listpreter.add(p);
+                              
+                                
+                              
+
+			}
+                        
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally{
+			ConnectionManager.getInstance().fermerConnection(c);
+		}
+		
+		return listpreter;
+    }
     
 }

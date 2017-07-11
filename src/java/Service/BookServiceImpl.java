@@ -56,5 +56,10 @@ public class BookServiceImpl implements IBookService {
   public Book getBookID(Book b){
      return IB.getBookID(b);
   }
+
+    @Override
+    public List<Book> ListBookZero() {
+        return IB.ListBookZero();
+    }
   
 }

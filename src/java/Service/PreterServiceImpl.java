@@ -35,5 +35,10 @@ IPreter ip=new PreterImpl();
     public List<Preter> selectPreter() {
        return ip.selectPreter();
     }
+
+    @Override
+    public List<Preter> latebookslist() {
+        return ip.latebookslist();
+    }
     
 }

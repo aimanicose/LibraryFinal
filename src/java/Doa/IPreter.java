@@ -17,4 +17,5 @@ public interface IPreter {
     boolean deletePreter(Preter p);
     boolean updatePreter(Preter p);
     List<Preter> selectPreter();
+    List<Preter> latebookslist();
 }

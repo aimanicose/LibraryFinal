@@ -329,5 +329,59 @@ public class BookImpl implements IBook {
     }
     return b1;
   }
+
+    @Override
+    public List<Book> ListBookZero() {
+         List<Book> listbook=new ArrayList<Book>();
+    Connection c=null;
+    Book b1=null;
+    ResultSet s;
+    try
+    {
+      c=ConnectionManager.getInstance().etablirconnection();
+      
+      String req="SELECT * FROM `book` WHERE booksInStore=0";
+      
+      Statement st=c.createStatement();
+      
+      
+      s=st.executeQuery(req);
+      
+      
+      
+      while(s.next())
+      {
+        a.setAuthorID(Integer.parseInt(s.getString("AuthorID")));
+        e.setEditorID(Integer.parseInt(s.getString("EditorID")));
+        bg.setGenreID(Integer.parseInt(s.getString("GenreID")));
+        a=select.selectAuthor(a);
+        e=select.selectEditor(e);
+        bg=select.selectBookGenre(bg);
+        b1= new Book();
+        b1.setBookID(Integer.parseInt(s.getString("BookID")));
+        b1.setBookLanguage(s.getString("BookLanguage"));
+        b1.setBookName(s.getString("BookName"));
+        b1.setBookPrice(Double.parseDouble(s.getString("BookPrice")));
+        b1.setBookPublicationDate(s.getString("PublicationDate"));
+        b1.setBookSummary(s.getString("bookSummary"));
+        b1.setBookReferance(s.getString("bookReferance"));
+        b1.setBooksInStore(Integer.parseInt(s.getString("booksInStore")));
+        b1.setBookImageId(s.getString("bookImageId"));
+        b1.setBookAuthor(a);
+        b1.setBookEditor(e);
+        b1.setBookGenre(bg);
+        listbook.add(b1);
+      }
+      
+    }
+    catch(Exception e)
+    {
+      e.printStackTrace();
+    }
+    finally{
+      ConnectionManager.getInstance().fermerConnection(c);
+    }
+    return listbook;
+    }
 }
 
