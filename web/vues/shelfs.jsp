@@ -1,4 +1,3 @@
-<%@page import="Models.Author"%>
 <%@page import="java.util.List"%>
 <%@page import="Models.Book"%>
 <%@page import="com.google.gson.Gson"%>
@@ -14,14 +13,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Authors List</title>
+        <title>Shelfs List</title>
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/bootstrap.min.css" >
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/font-awesome.css" >
         <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/style.css" >
-        <link rel="stylesheet" type="text/css" href="<%=application.getContextPath() %>/vues/css/listnav.css" >
-        <script src="<%=application.getContextPath() %>/vues/js/jquery-3.2.1.min.js"></script>
-        <script src="<%=application.getContextPath() %>/vues/js/dataTable/jquery-listnav.min.js"></script>
-        
+        <link rel="stylesheet" href="<%=application.getContextPath() %>/vues/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
          <%
             response.setHeader("Cache-Control","no-cache");
             response.setHeader("Cache-Control","no-store");
@@ -65,12 +61,12 @@
                     <div class="col-md-12">
                         <div class="navbar-collapse collapse ">
                             <ul id="menu-top" class="nav navbar-nav navbar-right">
-                                <li><a href="index.jsp">Dashboard</a></li>   
+                                <li><a  href="index.jsp">Dashboard</a></li>   
                                 <li><a href="<s:url action="redirectBooks" namespace="/vues" />">Books</a></li>
                                 <li><a href="<s:url action="redirectBorrows" namespace="/vues" />">Borrows</a></li>
-                                <li><a class="menu-top-active" href="<s:url action="authorsList" namespace="/vues" />">Authors</a></li>
+                                <li><a href="<s:url action="authorsList" namespace="/vues" />">Authors</a></li>
                                 <li><a href="usersList.jsp">Users</a></li>
-                                <li><a href="shelfs.jsp">Shelfs</a></li>
+                                <li><a class="menu-top-active" href="shelfs.jsp">Shelfs</a></li>
                                 <li><a href="<s:url action="logout" namespace="/vues" />">Log Out</a></li>
                             </ul>
                         </div>
@@ -83,33 +79,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h4 class="page-head-line">Authors List</h4>
+                        <h4 class="page-head-line">Shelfs List</h4>
                     </div>
                 </div>
-                <div class="row">
-                      
-                    <ul id="myUL" class="uk-list formattedList">  
-                    <% 
-                        List<Author> authorsList=null;
-                        Author author=null;
-                        if(session.getAttribute("auhtorsList")!=null)
-                        {
-                        authorsList = (List<Author>)session.getAttribute("auhtorsList");
-                        for(int i=0;i<authorsList.size();i++){
-                        author = (Author)authorsList.get(i);
-                        
-                    %>
-                  
-                        <div class="col-md-4">
-                            <li>
-                                <a href="<s:url action="authorDetails" namespace="/vues" />?authorId=<%=author.getAuthorID()%>"><%=author.getAuthorFirstName() +" "+author.getAuthorLastName() +" ("+author.getAuthorPenName()+")" %></a> 
-                            </li>
-                        </div>
                 
-                    <%}}
-                    %>
-                    </ul>
-                    
+                <div class="text-center">
+                    <img src="<%=application.getContextPath() %>/vues/img/page-under-construction.jpg"/>
                 </div>
             </div>
         </div>
@@ -123,6 +98,5 @@
                 </div>
             </div>
         </footer>
-        <script src="<%=application.getContextPath() %>/vues/js/authorsScript.js"></script>
     </body>
 </html>

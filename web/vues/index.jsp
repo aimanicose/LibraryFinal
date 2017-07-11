@@ -75,7 +75,7 @@
                                 <li><a href="<s:url action="redirectBorrows" namespace="/vues" />">Borrows</a></li>
                                 <li><a href="<s:url action="authorsList" namespace="/vues" />">Authors</a></li>
                                 <li><a href="usersList.jsp">Users</a></li>
-                                <li><a href="forms.html">Shelfs</a></li>
+                                <li><a href="shelfs.jsp">Shelfs</a></li>
                                 <li><a href="<s:url action="logout" namespace="/vues" />">Log Out</a></li>
                             </ul>
                         </div>

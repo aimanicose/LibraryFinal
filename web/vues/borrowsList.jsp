@@ -69,7 +69,7 @@
                                 <li><a class="menu-top-active" href="<s:url action="redirectBorrows" namespace="/vues" />">Borrows</a></li>
                                 <li><a href="<s:url action="authorsList" namespace="/vues" />">Authors</a></li>
                                 <li><a href="usersList.jsp">Users</a></li>
-                                <li><a href="forms.html">Shelfs</a></li>
+                                <li><a href="shelfs.jsp">Shelfs</a></li>
                                 <li><a href="<s:url action="logout" namespace="/vues" />">Log Out</a></li>
                             </ul>
                         </div>
@@ -121,13 +121,19 @@
                                                 <td><%=preter.getUser().getUserInformation().getUserFirstName()+ " " + preter.getUser().getUserInformation().getUserLastName() %></td>
                                                 <td><%=preter.getBook().getBookName()%></td>
                                                 <td><%=preter.getDateSortie()%></td>
-                                                <td><%=preter.getDateEntree()%></td>
+                                                <td id="sortie<%=i%>"><%=preter.getDateEntree()%></td>
                                                 <td><%=preter.getMessage()%></td>
-                                                <td><span class="label label-sm <% if(preter.getStatut().equals("IN")){%>label-success<%}else{%>label-warning<%}%>"><%=preter.getStatut()%></span></td>
+                                                <td id="statut<%=i%>"><span class="label label-sm <% if(preter.getStatut().equals("IN")){%>label-success<%}else{%>label-warning<%}%>"><%=preter.getStatut()%></span></td>
                                                 <td>
                                             <div class="hidden-sm hidden-xs action-buttons">
-                                                <a class="green" href="#">
+                                                <a id="editRow<%=i%>" class="green" onclick="edit_row(<%=i%>)">
                                                     <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                                </a>
+                                                <a id="saveRow<%=i%>" class="orange col-md-1" style="display:none;" onclick="save_row(<%=i%>,<%=preter.getReference()%>)">
+                                                    <i class="ace-icon fa fa-check bigger-130"></i>
+                                                </a>
+                                                <a id="cancelRow<%=i%>" class="red" style="display:none;" onclick="cancel_row(<%=i%>)">
+                                                    <i class="ace-icon fa fa-times bigger-130"></i>
                                                 </a>
                                             </div>
                                         </td>

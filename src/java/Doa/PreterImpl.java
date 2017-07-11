@@ -76,7 +76,7 @@ IBook ib=new BookImpl();
 		try
 		{
 			c=ConnectionManager.getInstance().etablirconnection();
-			String req="Update preter SET BookID="+p.getBook().getBookID()+",DateSortie='"+p.getDateSortie()+"',Message='"+p.getMessage()+"',Reference='"+p.getReference()+"',Statut='"+p.getStatut()+"',DateEntree='"+p.getDateEntree()+"' WHERE UserID = "+p.getUser().getUserID()+"";
+			String req="Update preter SET Statut='"+p.getStatut()+"',DateEntree='"+p.getDateEntree()+"' WHERE Reference = "+p.getReference()+"";
 			Statement st=c.createStatement();
 			st.execute(req);
 			bool=true;
