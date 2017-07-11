@@ -104,7 +104,7 @@
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="dashboard-div-wrapper bk-clr-two">
-                            <a href="#">
+                            <a href="<s:url action="redirectBorrows" namespace="/vues" />">
                                 <i  class="fa fa-edit dashboard-div-icon" ></i>
                             </a>
                             <h3 id="booksOutStore">0<h3/>
@@ -116,7 +116,7 @@
                             <a href="#">
                                 <i  class="fa fa-cogs dashboard-div-icon" ></i>
                             </a>
-                            <h3>&nbs<h3/>
+                            <h3>Settings<h3/>
                                 <h5>Manage Store </h5>
                         </div>
                     </div>
