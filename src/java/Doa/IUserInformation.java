@@ -6,6 +6,7 @@
 package Doa;
 
 import Models.UserInformation;
+import java.util.List;
 
 /**
  *
@@ -15,5 +16,6 @@ public interface IUserInformation {
     boolean addUserInformation(UserInformation ui);
     boolean deleteUserInformation(UserInformation ui);
     boolean updateUserInformation(UserInformation ui);
+    List<UserInformation> selectUserInformation();
     UserInformation selectUserInformation(UserInformation ui);
 }

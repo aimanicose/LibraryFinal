@@ -10,6 +10,7 @@ import Doa.IUserInformation;
 import Doa.UserImpl;
 import Doa.UserInformationImpl;
 import Models.User;
+import Models.UserInformation;
 import java.util.List;
 
 /**
@@ -49,5 +50,10 @@ IUserInformation iui=new UserInformationImpl();
     public List<User> selectListUser() {
         return iu.selectListUser();
     }
+
+  @Override
+  public List<UserInformation> selectInforamtion() {
+      return iui.selectUserInformation();
+  }
     
 }
