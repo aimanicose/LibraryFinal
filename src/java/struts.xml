@@ -113,5 +113,10 @@
                  <param name="inputName">notificationsList</param>
             </result>
         </action>
+        
+        <action name="usersList" 
+                class="presentation.UsersAction" method="getListUsers">
+                <result name="success" type="redirect">/vues/usersList.jsp</result>
+        </action>
     </package>
 </struts>

@@ -6,6 +6,7 @@
 package Service;
 
 import Models.User;
+import Models.UserInformation;
 import java.util.List;
 
 /**
@@ -23,4 +24,6 @@ public interface IUserService {
     User selectUser(User u);
     
     List<User> selectListUser();
+    
+    List<UserInformation> selectInforamtion();
 }

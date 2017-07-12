@@ -1,5 +1,5 @@
+<%@page import="Models.UserInformation"%>
 <%@page import="java.util.List"%>
-<%@page import="Models.Book"%>
 <%@page import="com.google.gson.Gson"%><%@taglib uri="/struts-tags" prefix="s" %>
 <%@taglib uri="http://displaytag.sf.net" prefix="display" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -66,7 +66,7 @@
                                 <li><a href="<s:url action="redirectBorrows" namespace="/vues" />">Borrows</a></li>
                                 <li><a href="<s:url action="authorsList" namespace="/vues" />">Authors</a></li>
                                 <li><a class="menu-top-active" href="usersList.jsp">Users</a></li>
-                                <li><a href="shelfs.jsp">Shelfs</a></li>
+                                <li><a href="<s:url action="usersList" namespace="/vues" />">Shelfs</a></li>
                                 <li><a href="<s:url action="logout" namespace="/vues" />">Log Out</a></li>
                             </ul>
                         </div>
@@ -82,9 +82,62 @@
                         <h4 class="page-head-line">Users List</h4>
                     </div>
                 </div>
+                <div class="panel-body">
+                    <div class="table-container">
+                        <table class="table-users table" border="0">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>ID</th>
+                                    <th>First Name/Last Name</th>
+                                    <th>Email</th>
+                                    <th>Birth Date</th>
+                                    <th>Address</th>
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                <% 
+                                    List<UserInformation> usersList =null;
+                                    UserInformation user=null;
+                                    if(session.getAttribute("usersList")!=null)
+                                    {
+                                        usersList = (List<UserInformation>)session.getAttribute("usersList");
+                                        for(int i=0;i<usersList.size();i++){
+                                        user = (UserInformation)usersList.get(i);
+                                %>
+                                <tr>
+                                    <td width="10" align="center">
+                                        <div style="font-size: 15px;line-height: 1.5em;">
+                                            <span class="fa-stack fa-lg">
+                                                <i class="fa fa-circle fa-stack-2x"></i>
+                                                <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+                                            </span>    
+                                        </div>
+                                    </td>
+                                    <td style="line-height: 40px;">
+                                        <%=user.getUserID()%>
+                                    </td>
+                                    <td style="line-height: 40px;">
+                                       <%=user.getUserFirstName() + " "+ user.getUserLastName()%>
+                                    </td>
+                                    <td style="line-height: 40px;">
+                                          <%=user.getUserEmail()%> <i class="fa fa-envelope"></i>
+                                    </td>
+                                    <td style="line-height: 40px;">
+                                          <%=user.getUserBirthDate()%>
+                                    </td>
+                                    <td style="line-height: 40px;">
+                                         <%=user.getUserAddress()%>
+                                    </td>
+                                </tr>
+                                <%}}
+                                %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
             </div>
         </div>
-        Yassine is yag
         <!-- CONTENT-WRAPPER SECTION END-->
         <footer>
             <div class="container">
