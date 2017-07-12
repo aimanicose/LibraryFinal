@@ -122,7 +122,7 @@
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="dashboard-div-wrapper bk-clr-three">
-                            <a href="#">
+                            <a href="shelfs.jsp">
                                 <i  class="fa fa-cogs dashboard-div-icon" ></i>
                             </a>
                             <h3>Settings<h3/>
