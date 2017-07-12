@@ -121,13 +121,31 @@ function clearFilterInput(){
     filterBooks();
 }
 
-function loadCreateBook() {
+function addGenre() {
+    var genreID = document.getElementById("genreId").value;
+    var genreName = document.getElementById("genreName").value;
     $.ajax({
-        url : "http://localhost:8080/Library_Final/vues/authorEditorInfo",
-        type : "GET",
+        url : "http://localhost:8080/Library_Final/vues/addGenre.action?beanGenre.genreID="+genreID+"&beanGenre.genreName="+genreName,
+        type : "POST",
         success : function(data) {
             if(data){
-                console.log(data);
+                $('#genreModal').modal('hide');
+            }
+        }
+    });
+}
+
+function addEditor() {
+    var editorID = document.getElementById("editorId").value;
+    var editorName = document.getElementById("editorName").value;
+    var editorAddress = document.getElementById("editorAddress").value;
+     
+    $.ajax({
+        url : "http://localhost:8080/Library_Final/vues/addEditor.action?beanEditor.editorID="+editorID+"&beanEditor.editorName="+editorName+"&beanEditor.editorAddress="+editorAddress,
+        type : "POST",
+        success : function(data) {
+            if(data){
+                $('#editorModal').modal('hide');
             }
         }
     });

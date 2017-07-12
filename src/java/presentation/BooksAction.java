@@ -6,8 +6,12 @@ import Models.BookGenre;
 import Models.Editor;
 import Models.Preter;
 import Models.User;
+import Service.BookGenreServiceImpl;
 import Service.BookServiceImpl;
+import Service.EditorServiceImpl;
+import Service.IBookGenreService;
 import Service.IBookService;
+import Service.IEditorService;
 import Service.IPreterService;
 import Service.PreterServiceImpl;
 import com.google.gson.Gson;
@@ -41,9 +45,11 @@ public class BooksAction extends ActionSupport {
   private String bookEditor;
   private String bookGenre;
   private Book beanBook;
+  private Editor beanEditor;
+  private BookGenre beanGenre;
+  private InputStream dummy;
   
-  
-  
+
   public String redirectBooks(){
     List<Book> bookList = new ArrayList<Book>();
     IBookService bookService = new BookServiceImpl();
@@ -174,6 +180,30 @@ public class BooksAction extends ActionSupport {
     inOutBooks = new ByteArrayInputStream(jsonResponse.getBytes());
     return SUCCESS;
   }
+  
+    
+  public String addGenre()
+ {
+    IBookGenreService ibg=new BookGenreServiceImpl();
+    boolean add =ibg.addBookGenre(beanGenre);
+    GsonBuilder gb = new GsonBuilder();
+    Gson s = gb.create();
+    String jsonResponse = s.toJson(new ArrayList());
+    dummy = new ByteArrayInputStream(jsonResponse.getBytes());
+    return SUCCESS;
+ }
+  
+  
+ public String addEditor()
+ {
+    IEditorService IE=new EditorServiceImpl();
+    boolean add =IE.addEditor(beanEditor);
+    GsonBuilder gb = new GsonBuilder();
+    Gson s = gb.create();
+    String jsonResponse = s.toJson(new ArrayList());
+    dummy = new ByteArrayInputStream(jsonResponse.getBytes());
+    return SUCCESS;
+ }
 // file name of the upload file is included in content-disposition header like this:
 //form-data; name="dataFile"; filename="PHOTO.JPG"
   
@@ -311,4 +341,42 @@ public class BooksAction extends ActionSupport {
     public void setBookGenre(String bookGenre) {
         this.bookGenre = bookGenre;
     }
+
+    /**
+     * @return the beanEditor
+     */
+    public Editor getBeanEditor() {
+        return beanEditor;
+    }
+
+    /**
+     * @param beanEditor the beanEditor to set
+     */
+    public void setBeanEditor(Editor beanEditor) {
+        this.beanEditor = beanEditor;
+    }
+
+    /**
+     * @return the beanGenre
+     */
+    public BookGenre getBeanGenre() {
+        return beanGenre;
+    }
+
+    /**
+     * @param beanGenre the beanGenre to set
+     */
+    public void setBeanGenre(BookGenre beanGenre) {
+        this.beanGenre = beanGenre;
+    }
+
+    public InputStream getDummy() {
+        return dummy;
+    }
+
+    public void setDummy(InputStream dummy) {
+        this.dummy = dummy;
+    }
+    
+    
 }
