@@ -158,32 +158,31 @@
                 </div>
             </div>
         </div>
-        
         <div class="modal fade" id="genreModal" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Add New Genre</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="form-group">
-                        <label for="genreId">Genre ID</label>
-                        <input type="text" class="form-control" id="genreId" name="beanGenre.genreId" placeholder="Enter genre ID" />
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Add New Genre</h4>
                     </div>
-                    <div class="form-group">
-                        <label for="genreName">Genre Name</label>
-                        <input type="text" class="form-control" id="genreName" name="beanGenre.genreName" placeholder="Enter genre name" />
+                    <div class="modal-body">
+                      <div class="form-group">
+                          <label for="genreId">Genre ID</label>
+                          <input type="text" class="form-control" id="genreId" name="beanGenre.genreID" placeholder="Enter genre ID" />
+                      </div>
+                      <div class="form-group">
+                          <label for="genreName">Genre Name</label>
+                          <input type="text" class="form-control" id="genreName" name="beanGenre.genreName" placeholder="Enter genre name" />
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" onclick="addGenre()" class="btn btn-success">Submit</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                   </div>
-                  <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Submit</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-            </div>
-        </div>
-        
+              </div>
+          </div>
+       
         <div class="modal fade" id="editorModal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -194,7 +193,7 @@
                   <div class="modal-body">
                     <div class="form-group">
                         <label for="editorId">Editor ID</label>
-                        <input type="text" class="form-control" id="editorId" name="beanEditor.editorId" placeholder="Enter editor ID" />
+                        <input type="text" class="form-control" id="editorId" name="beanEditor.editorID" placeholder="Enter editor ID" />
                     </div>
                     <div class="form-group">
                         <label for="editorName">Editor Name</label>
@@ -206,13 +205,12 @@
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="button" onclick="addEditor()" class="btn btn-success">Submit</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   </div>
                 </div>
             </div>
         </div>
-        
         <!-- CONTENT-WRAPPER SECTION END-->
         <footer>
             <div class="container">
