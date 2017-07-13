@@ -1,6 +1,31 @@
+jQuery.extend( jQuery.fn.dataTableExt.oSort, {
+"date-uk-pre": function ( a ) {
+    var ukDatea = a.split('/');
+    return (ukDatea[2] + ukDatea[1] + ukDatea[0]) * 1;
+},
+
+"date-uk-asc": function ( a, b ) {
+    return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+},
+
+"date-uk-desc": function ( a, b ) {
+    return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+}
+} );
+
 jQuery(function($) {
     //initiate dataTables plugin
     var myTable = $('#dynamic-table').DataTable({
+        "aoColumns": [
+            null,
+            null,
+            null,
+            { "sType": "date-uk" },
+            { "sType": "date-uk" },
+            null, 
+            null,
+            null
+        ]
     });
 
     $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
