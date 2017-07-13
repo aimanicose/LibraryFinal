@@ -60,7 +60,7 @@
                             <hr />
                             <h4>Login with <strong>your Library Account  :</strong></h4>
                             <br />
-                            <label>Enter Email ID : </label>
+                            <label>Enter Username : </label>
                             <input required name="bean.login" key="user.login" type="text" Class="form-control" oninvalid="this.setCustomValidity('Please enter your username')" oninput="setCustomValidity('')"/>
                             <label>Enter Password :  </label>
                             <input required name="bean.password" key="user.password" type="password" Class="form-control" oninvalid="this.setCustomValidity('Please enter your password')" oninput="setCustomValidity('')"/>
