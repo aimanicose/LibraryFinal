@@ -61,9 +61,9 @@
                             <h4>Login with <strong>your Library Account  :</strong></h4>
                             <br />
                             <label>Enter Email ID : </label>
-                            <input required name="bean.login" key="user.login" Class="form-control" oninvalid="this.setCustomValidity('Enter your UserName Please')" oninput="setCustomValidity('')"/>
+                            <input required name="bean.login" key="user.login" type="text" Class="form-control" oninvalid="this.setCustomValidity('Enter your UserName Please')" oninput="setCustomValidity('')"/>
                             <label>Enter Password :  </label>
-                            <input required name="bean.password" key="user.password" Class="form-control" oninvalid="this.setCustomValidity('Enter your Password Please')" oninput="setCustomValidity('')"/>
+                            <input required name="bean.password" key="user.password" type="password" Class="form-control" oninvalid="this.setCustomValidity('Enter your Password Please')" oninput="setCustomValidity('')"/>
                             <hr />
                             <button type="submit" class="btn btn-info">
                                 <span class="glyphicon glyphicon-user"></span> Log Me In
