@@ -154,7 +154,7 @@
                                     </row>
                                     <row>
                                         <div class="input_fields_wrap">
-                                            <div><input id="book1" class="typeahead form-control ui-autocomplete-input" autocomplete="new-password" type="text" name="borrowBookList[1].bookName"></div>
+                                            <div><input id="book1" class="typeahead form-control ui-autocomplete-input" autocomplete="new-password" type="text" name="borrowBookList[0].bookName"></div>
                                         </div>
                                     </row>
                                     <row>
